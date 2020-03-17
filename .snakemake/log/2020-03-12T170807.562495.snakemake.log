@@ -1,0 +1,4 @@
+Building DAG of jobs...
+WildcardError in line 3 of /media/gautier16/data/Gautier_home/Documents/internship2020/phasing_project/proto_workflow/Snakefile:
+Wildcards in input files cannot be determined from output files:
+'short'

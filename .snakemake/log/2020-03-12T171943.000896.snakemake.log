@@ -1,0 +1,3 @@
+KeyError in line 3 of /media/gautier16/data/Gautier_home/Documents/internship2020/phasing_project/proto_workflow/Snakefile:
+'short_reads'
+  File "/media/gautier16/data/Gautier_home/Documents/internship2020/phasing_project/proto_workflow/Snakefile", line 3, in <module>
