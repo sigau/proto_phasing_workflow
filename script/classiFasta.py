@@ -3,7 +3,7 @@
 
 import sys,os,re
 
-file=sys.argv[1]
+file=snakemake.input[0]
 
 with open (file,"r") as contenue:
     fasta=contenue.readlines()
@@ -11,8 +11,8 @@ with open (file,"r") as contenue:
 ##global variable
 nbseq=0                                             ###number of sequence in the fasta file
 secseq=0                                            ### secondary counter of nbseq
-new_file="rename_"+file                             ### the file after we add A and B
-sort_file="sorted_"+new_file                        ### the file after we insert the B between the A
+new_file="renamed_"+file                             ### the file after we add A and B
+sort_file=snakemake.output[0]                        ### the file after we insert the B between the A
 
 ##count the number of sequence
 position_of_chevron=[]
