@@ -58,11 +58,11 @@ rule index_fasta:          ### Indexing the reference sequence
     input:
         fa=expand("data/genome/{genome}.fasta", genome=config["genome"])
     output:
-        amb=expand("data/genome/{genome}.amb", genome=config["genome"]),
-        ann=expand("data/genome/{genome}.ann", genome=config["genome"]),
-        bwt=expand("data/genome/{genome}.bwt", genome=config["genome"]),
-        pac=expand("data/genome/{genome}.pac", genome=config["genome"]),
-        sa=expand("data/genome/{genome}.sa", genome=config["genome"]),
+        amb=expand("data/genome/{genome}.fasta.amb", genome=config["genome"]),
+        ann=expand("data/genome/{genome}.fasta.ann", genome=config["genome"]),
+        bwt=expand("data/genome/{genome}.fasta.bwt", genome=config["genome"]),
+        pac=expand("data/genome/{genome}.fasta.pac", genome=config["genome"]),
+        sa=expand("data/genome/{genome}.fasta.sa", genome=config["genome"]),
         dic=expand("data/genome/{genome}.dict", genome=config["genome"])
     shell:
         "bwa index {input.fa}" 
@@ -73,7 +73,7 @@ rule bwa_aln:           ###align the reads with the reference fasta
     input:
         fa=expand("data/genome/{genome}.fasta", genome=config["genome"]),
         SR=expand("data/short_reads/{short}"+SR_ext , short=config["short_reads"]),
-        sa=expand("data/genome/{genome}.sa", genome=config["genome"])  #just for doing it after index_fasta
+        sa=expand("data/genome/{genome}.fasta.sa", genome=config["genome"])  #just for doing it after index_fasta
     output:
         temp("data/aligned_read/short_reads/sam_file/"+sample_name+".sam")
     log:
