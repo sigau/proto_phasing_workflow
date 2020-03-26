@@ -3,6 +3,16 @@ channels:
   - bioconda
 
 dependencies:
-  - bcftools =1.9
-  - samtools =1.9
-  
+  - bcftools 
+  - samtools 
+  - fastqc 
+  - nanoplot 
+  - bwa 
+  - picard 
+  - gatk4 
+  - porechop
+  - minimap2 
+  - whatshap 
+  - python =3.6
+  - mummer 
+  - snakemake 
