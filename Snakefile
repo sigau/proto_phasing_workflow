@@ -33,7 +33,7 @@ rule QC_SR:
         path="quality_control/short_reads/"
     shell:
         "fastqc -o {output.path} {input.SR}"
-        "| firefox {output.path}*.html"
+        "&& firefox {output.path}*.html"
         
 rule QC_LR:
     input:
@@ -50,7 +50,7 @@ rule QC_LR:
         format="svg"### Specify format for output {eps,jpeg,jpg,pdf,pgf,png,ps,raw,rgba,svg,svgz,tif,tiff}
     shell:
         "NanoPlot -t {threads} {params.N50} {params.rich} {input} -o {output.path} -f {params.format}"
-        " | firefox {output.path}{output.html}"
+        " && firefox {output.path}{output.html}"
 
 ################################################## Manipulation on the SHORT-READS ######################################################################################
 
@@ -66,8 +66,8 @@ rule index_fasta:          ### Indexing the reference sequence
         dic=expand("data/genome/{genome}.dict", genome=config["genome"])
     shell:
         "bwa index {input.fa}" 
-        "| picard CreateSequenceDictionary R={input.fa} O={output.dic}" 
-        "| samtools faidx {input.fa}"
+        "&& picard CreateSequenceDictionary R={input.fa} O={output.dic}" 
+        "&& samtools faidx {input.fa}"
 
 rule bwa_aln:           ###align the reads with the reference fasta  
     input:
@@ -80,7 +80,7 @@ rule bwa_aln:           ###align the reads with the reference fasta
         "log/bwa_mem/"+sample_name+".log"
     threads: 8
     shell:
-        "(bwa mem -M -t {threads} {input.fa} {input.SR} > {sample_name}.sam) 2> {log}"   ###-M parameter for mapping to mark which alignments are primary and which are secondary
+        "(bwa mem -M -t {threads} {input.fa} {input.SR} > {output}) 2> {log}"   ###-M parameter for mapping to mark which alignments are primary and which are secondary
 
 rule sam_to_bamSR:           ### compressed to BAM 
     input:
@@ -278,7 +278,7 @@ rule haplo_fasta:       ###Creating phased haplotype in FASTA format
         "log/bcftools/"+sample_name+"LR.log"
     shell:
         "(bcftools consensus -H 1pIu -f {input.ref} {input.vgz} > {output.h1}"
-        "| bcftools consensus -H 2pIu -f {input.ref} {input.vgz} > {output.h2} ) 2> {log}"
+        "&& bcftools consensus -H 2pIu -f {input.ref} {input.vgz} > {output.h2} ) 2> {log}"
 
 rule merge_haplo:   ###Merging the haplotype  
     input:
