@@ -23,24 +23,23 @@ rule all:
 ################################################## Quality control ######################################################################################
 rule QC:
     input:
-        pathSR="quality_control/short_reads/",
-        pathLR="quality_control/long_reads/"
+        htmlSR=expand("quality_control/short_reads/{short}_fastqc.html", short=config["short_reads"]),
+        htmlLR="quality_control/long_reads/NanoPlot-report.html"
         
 rule QC_SR:
     input:
         SR=expand("data/short_reads/{short}"+SR_ext , short=config["short_reads"])
     output:
-        path="quality_control/short_reads/"
+        html=expand("quality_control/short_reads/{short}_fastqc.html", short=config["short_reads"])
     shell:
-        "fastqc -o {output.path} {input.SR}"
-        "&& firefox {output.path}*.html"
+        "fastqc -o quality_control/short_reads/ {input.SR}"
+        "&& firefox {output.html}"
         
 rule QC_LR:
     input:
         LR=expand("data/long_reads/{long}"+LR_ext, long=config["long_reads"])
     output:
-        path="quality_control/long_reads/",
-        html="NanoPlot-report.html"
+        html="quality_control/long_reads/NanoPlot-report.html"
     threads : 10
     params:
         barcode="--barcoded", ###Use if you want to split the summary file by barcode
@@ -49,8 +48,8 @@ rule QC_LR:
                     #with additional information concerning channel and time.
         format="svg"### Specify format for output {eps,jpeg,jpg,pdf,pgf,png,ps,raw,rgba,svg,svgz,tif,tiff}
     shell:
-        "NanoPlot -t {threads} {params.N50} {params.rich} {input} -o {output.path} -f {params.format}"
-        " && firefox {output.path}{output.html}"
+        "NanoPlot -t {threads} {params.N50} {params.rich} {input} -o quality_control/long_reads/ -f {params.format}"
+        " && firefox {output.html}"
 
 ################################################## Manipulation on the SHORT-READS ######################################################################################
 
@@ -75,7 +74,7 @@ rule bwa_aln:           ###align the reads with the reference fasta
         SR=expand("data/short_reads/{short}"+SR_ext , short=config["short_reads"]),
         sa=expand("data/genome/{genome}.fasta.sa", genome=config["genome"])  #just for doing it after index_fasta
     output:
-        temp("data/aligned_read/short_reads/sam_file/"+sample_name+".sam")
+        "data/aligned_read/short_reads/sam_file/"+sample_name+".sam"
     log:
         "log/bwa_mem/"+sample_name+".log"
     threads: 8
@@ -90,7 +89,7 @@ rule sam_to_bamSR:           ### compressed to BAM
     log:
         "log/samtools_view/sam_to_bam/"+sample_name+".log"
     shell:
-        "(samsamtools view -Sb {input} > {output}) 2> {log}"
+        "(samtools view -Sb {input} > {output}) 2> {log}"
 
 rule sort_bamSR:          ### sort the bam (needed for variant calling)
     input:
@@ -231,7 +230,7 @@ rule index_bam:        ### indexing the bam file
     input:
         "data/aligned_read/long_reads/sort_bam/"+sample_name+"_LR_SORTED.bam"
     output:
-        "data/aligned_read/long_reads/sort_bam/"+sample_name+"_LR_SORTED.bai"
+        "data/aligned_read/long_reads/sort_bam/"+sample_name+"_LR_SORTED.bam.bai"
     shell:
         "samtools index {input}"
 
@@ -242,7 +241,7 @@ rule what_phase:        ### reconstruct the haplotypes
         ref=expand("data/genome/{genome}.fasta", genome=config["genome"]),
         vcf="data/variant-called/ShortReads/"+sample_name+"SR.vcf",
         LR="data/aligned_read/long_reads/sort_bam/"+sample_name+"_LR_SORTED.bam",
-        Index="data/aligned_read/long_reads/sort_bam/"+sample_name+"_LR_SORTED.bai"
+        Index="data/aligned_read/long_reads/sort_bam/"+sample_name+"_LR_SORTED.bam.bai"
     output:
         "data/variant-called/ShortReads/"+sample_name+"_phased.vcf"
     log:
@@ -262,7 +261,7 @@ rule tabix:     ##indexing the phased compressed vcf
     input:
         "data/variant-called/ShortReads/"+sample_name+"_phased.vcf.gz"
     output:
-        "data/variant-called/ShortReads/"+sample_name+"_phased.vcf.gzi"
+        "data/variant-called/ShortReads/"+sample_name+"_phased.vcf.gz.tbi"
     shell:
         "tabix {input}"
 
@@ -270,7 +269,7 @@ rule haplo_fasta:       ###Creating phased haplotype in FASTA format
     input:
         vgz="data/variant-called/ShortReads/"+sample_name+"_phased.vcf.gz",
         ref=expand("data/genome/{genome}.fasta", genome=config["genome"]),
-        index= "data/variant-called/ShortReads/"+sample_name+"_phased.vcf.gzi"   #just for doing it after tabix
+        index= "data/variant-called/ShortReads/"+sample_name+"_phased.vcf.gz.tbi"   #just for doing it after tabix
     output:
         h1="result/haplotype/fasta/"+sample_name+"haplotype_1.fasta",
         h2="result/haplotype/fasta/"+sample_name+"haplotype_2.fasta"
@@ -302,12 +301,12 @@ rule nucmer:        ###aligned the haplotype with the reference nucmer
         ref=expand("data/genome/{genome}.fasta", genome=config["genome"]),
         fa="result/haplotype/fasta/"+sample_name+"haplotype_sorted.fasta"
     output:
-        path="result/delta_file/"+sample_name ,
+        #path="result/delta_file/"+sample_name ,
         name="result/delta_file/"+sample_name+".delta"
     log:
         "log/nucmer/"+sample_name+".log"
     shell: 
-        "(nucmer --maxmatch --prefix={output.path} {input.ref} {input.fa}) 2> {log}"
+        "(nucmer --maxmatch --prefix=result/delta_file/{sample_name} {input.ref} {input.fa}) 2> {log}"
 
 rule delta_filter:
     input:
@@ -323,9 +322,9 @@ rule memmer_plot:
     input:
         "result/delta_file/"+sample_name+"_filtered.delta"
     output:
-        path="result/plots/"+sample_name,
+        #path="result/plots/"+sample_name,
         gp="result/plots/"+sample_name+".gp"
     log:
         "log/memerplot/"+sample_name+".log"
     shell:
-        "(mummerplot -p {output.path} -s large {input}) 2> {log}"
+        "(mummerplot -p result/plots/{sample_name} -s large {input}) 2> {log}"

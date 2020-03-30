@@ -11,7 +11,7 @@ with open (file,"r") as contenue:
 ##global variable
 nbseq=0                                             ###number of sequence in the fasta file
 secseq=0                                            ### secondary counter of nbseq
-new_file="renamed_"+file                             ### the file after we add A and B
+new_file="result/haplotype/fasta/temp_renamed.fasta"                             ### the file after we add A and B
 sort_file=snakemake.output[0]                        ### the file after we insert the B between the A
 
 ##count the number of sequence
@@ -36,9 +36,9 @@ for line in fasta :
                     pipeCPT=pipeCPT+1
                     wip=i
         if secseq<=(nbseq/2):
-            line=line[0:wip-1]+"A"+line[wip:len(line)-1]+"\n"       ### we add a A just before the second pipe
+            line=line[0:wip]+"A"+line[wip:len(line)-1]+"\n"       ### we add a A just before the second pipe
         else:
-            line=line[0:wip-1]+"B"+line[wip:len(line)-1]+"\n"       ### we add a B just before the second pipe
+            line=line[0:wip]+"B"+line[wip:len(line)-1]+"\n"       ### we add a B just before the second pipe
     
         nf=open(new_file,"a") 
         nf.write(line)
