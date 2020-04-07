@@ -14,5 +14,5 @@ dependencies:
   - minimap2 
   - whatshap 
   - python =3.6
-  - mummer 
-  - snakemake 
+  - mummer
+  - bioconda::snakemake-minimal =5.4.5  

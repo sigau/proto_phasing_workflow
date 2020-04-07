@@ -23,7 +23,7 @@ for line in fasta :
         nbseq=nbseq+1
         position_of_chevron.append(cpt_chevron)                      ###we spot where are the chevron and so
                                                                      ###where the sequence begin and end
-
+list_of_chrom=[]
 ### first step rename the sequence with identical name
 for line in fasta :
     if line[0]==">" :
@@ -35,7 +35,9 @@ for line in fasta :
                 if line[i]=="|" :
                     pipeCPT=pipeCPT+1
                     wip=i
-        if secseq<=(nbseq/2):
+        chrom=line[0:wip]
+        if chrom not in list_of_chrom:
+            list_of_chrom.append(chrom)
             line=line[0:wip]+"A"+line[wip:len(line)-1]+"\n"       ### we add a A just before the second pipe
         else:
             line=line[0:wip]+"B"+line[wip:len(line)-1]+"\n"       ### we add a B just before the second pipe
