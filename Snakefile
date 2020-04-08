@@ -171,7 +171,18 @@ rule gatk_haplo:    ### Variant calling (short reads)
 #                                                                                                                                                                #
 ##################################################################################################################################################################
 
-
+rule vcf_stats:
+    input:
+        "data/variant-called/ShortReads/"+sample_name+"SR.vcf"
+    output:
+        txt="data/variant-called/ShortReads/"+sample_name+"SR_stats.txt",
+        pdf="data/variant-called/ShortReads/plot/summary.pdf"
+    log:
+        "log/plot-vcfstats/"+sample_name+".log"
+    shell:
+        "(bcftools stats {input} > {output.txt} "
+        "&& plot-vcfstats -p data/variant-called/ShortReads/plot/ -s {output.txt}"
+        " ) 2> {log}"
 
 ################################################## Manipulation on the LONG-READS ######################################################################################
 
