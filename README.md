@@ -51,6 +51,11 @@ At the end of the pipeline you obtain a fasta file of the two haplotype and a gr
 
 ![graph](img/sample.jpg)
 ******************
+## Directed Acyclic Graph (DAG) of the pipeline
+
+![DAG](/dag.svg)
+
+******************
 ## directory tree structure
 After the pipeline finish you directory tree structure should look like the one in the tree.txt :
 
