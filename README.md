@@ -50,5 +50,5 @@ Once your quality control are ok you can use the pipeline with
 ## directory tree structure
 After the pipeline finish you directory tree structure should look like the one in the tree.txt :
 
-![tree1](/tree1.pnj)
-![tree2](/tree2.pnj)
+![tree1](/tree1.png)
+![tree2](/tree2.png)
