@@ -53,7 +53,7 @@ At the end of the pipeline you obtain a fasta file of the two haplotype and a gr
 ******************
 ## Directed Acyclic Graph (DAG) of the pipeline
 
-![DAG](/dag.svg)
+![DAG](dag.svg)
 
 ******************
 ## directory tree structure
