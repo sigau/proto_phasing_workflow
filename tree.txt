@@ -1,0 +1,157 @@
+.
+├── config.yaml
+├── dag.svg
+├── data
+│   ├── aligned_read
+│   │   ├── long_reads
+│   │   │   ├── bam_file
+│   │   │   │   └── sample_LR.bam
+│   │   │   ├── sam_file
+│   │   │   │   └── sample_LR.sam
+│   │   │   └── sort_bam
+│   │   │       ├── sample_LR_SORTED.bam
+│   │   │       └── sample_LR_SORTED.bam.bai
+│   │   └── short_reads
+│   │       ├── bam_file
+│   │       │   └── sample.bam
+│   │       ├── mapped_bam
+│   │       │   └── sample_SORTED_mapped.bam
+│   │       ├── mark_bam
+│   │       │   └── sample_markduplicated.bam
+│   │       ├── readyToCall
+│   │       │   ├── sample_ok.bai
+│   │       │   └── sample_ok.bam
+│   │       ├── sam_file
+│   │       │   └── sample.sam
+│   │       └── sorted_bam
+│   │           └── sample_SORTED.bam
+│   ├── genome
+│   │   ├── S288C_reference_sequence_R64-2-1_20150113.dict
+│   │   ├── S288C_reference_sequence_R64-2-1_20150113.fasta
+│   │   ├── S288C_reference_sequence_R64-2-1_20150113.fasta.amb
+│   │   ├── S288C_reference_sequence_R64-2-1_20150113.fasta.ann
+│   │   ├── S288C_reference_sequence_R64-2-1_20150113.fasta.bwt
+│   │   ├── S288C_reference_sequence_R64-2-1_20150113.fasta.fai
+│   │   ├── S288C_reference_sequence_R64-2-1_20150113.fasta.pac
+│   │   └── S288C_reference_sequence_R64-2-1_20150113.fasta.sa
+│   ├── long_reads
+│   │   ├── Sample_long-reads_0_0.fastq
+│   │   ├── Sample_long-reads_0_0_.fastq
+|   |   ├── ...
+│   │   ├── Sample_long-reads_99_2.fastq
+│   │   ├── Sample_long-reads_99_3.fastq
+│   │   ├── merged
+│   │   │   └── sample_LR_merged.fastq
+│   │   └── trim
+│   │       └── sample_LR_trim.fastq
+│   ├── markduplicated_metrics
+│   │   └── samplemarkduplicates_metric.txt
+│   ├── short_reads
+│   │   ├── BCM_CPCOSW_4_1_C4VAEACXX.IND42_clean.fastq.gz
+│   │   └── BCM_CPCOSW_4_2_C4VAEACXX.IND42_clean.fastq.gz
+│   └── variant-called
+│       └── ShortReads
+│           ├── plot
+│           │   ├── counts_by_af.indels.dat
+│           │   ├── counts_by_af.snps.dat
+│           │   ├── depth.0.dat
+│           │   ├── depth.0.png
+│           │   ├── indels.0.dat
+│           │   ├── indels.0.png
+│           │   ├── plot.py
+│           │   ├── plot-vcfstats.log
+│           │   ├── substitutions.0.png
+│           │   ├── summary.aux
+│           │   ├── summary.log
+│           │   ├── summary.pdf
+│           │   ├── summary.tex
+│           │   ├── tstv_by_af.0.dat
+│           │   ├── tstv_by_qual.0.dat
+│           │   └── tstv_by_qual.0.png
+│           ├── sample_phased.vcf.gz
+│           ├── sample_phased.vcf.gz.tbi
+│           ├── sampleSR_stats.txt
+│           ├── sampleSR.vcf
+│           └── sampleSR.vcf.idx
+├── diff.txt
+├── environement.yaml
+├── fillConfig.py
+├── log
+│   ├── bcftools
+│   │   └── sampleLR.log
+│   ├── bwa_mem
+│   │   └── sample.log
+│   ├── delta-filtersample.log
+│   ├── gatk
+│   ├── memerplot
+│   │   └── sample.log
+│   ├── minimap2
+│   │   └── sample.log
+│   ├── nucmer
+│   │   └── sample.log
+│   ├── picardtools
+│   │   ├── sample-AddOrReplaceReadGroups.log
+│   │   └── sample_markduplicated.log
+│   ├── plot-vcfstats
+│   │   └── sample.log
+│   ├── porechop
+│   │   └── sample.log
+│   ├── samtools_sort
+│   │   ├── sampleLR.log
+│   │   └── sampleSR.log
+│   ├── samtools_view
+│   │   ├── mapped_bam
+│   │   │   └── sample.log
+│   │   └── sam_to_bam
+│   │       └── sample.log
+│   ├── vcfplot
+│   │   └── sample.log
+│   └── whatshappsampleLR.log
+├── quality_control
+│   ├── long_reads
+│   │   ├── ActivePores_Over_Time.svg
+│   │   ├── ActivityMap_ReadsPerChannel.svg
+│   │   ├── CumulativeYieldPlot_Gigabases.svg
+│   │   ├── CumulativeYieldPlot_NumberOfReads.svg
+│   │   ├── Dynamic_Histogram_Read_length.html
+│   │   ├── HistogramReadlength.svg
+│   │   ├── LengthvsQualityScatterPlot_dot.svg
+│   │   ├── LengthvsQualityScatterPlot_kde.svg
+│   │   ├── LogTransformed_HistogramReadlength.svg
+│   │   ├── NanoPlot_20200327_1606.log
+│   │   ├── NanoPlot_20200408_1454.log
+│   │   ├── NanoPlot_20200408_1600.log
+│   │   ├── NanoPlot_20200408_1605.log
+│   │   ├── NanoPlot-report.html
+│   │   ├── NanoStats.txt
+│   │   ├── NumberOfReads_Over_Time.svg
+│   │   ├── TimeLengthViolinPlot.svg
+│   │   ├── TimeQualityViolinPlot.svg
+│   │   ├── Weighted_HistogramReadlength.svg
+│   │   ├── Weighted_LogTransformed_HistogramReadlength.svg
+│   │   └── Yield_By_Length.svg
+│   └── short_reads
+│       ├── BCM_CPCOSW_4_1_C4VAEACXX.IND42_clean_fastqc.html
+│       ├── BCM_CPCOSW_4_1_C4VAEACXX.IND42_clean_fastqc.zip
+│       ├── BCM_CPCOSW_4_2_C4VAEACXX.IND42_clean_fastqc.html
+│       └── BCM_CPCOSW_4_2_C4VAEACXX.IND42_clean_fastqc.zip
+├── README.md
+├── result
+│   ├── delta_file
+│   │   ├── sample.delta
+│   │   └── sample_filtered.delta
+│   ├── haplotype
+│   │   └── fasta
+│   │       ├── samplehaplotype_1.fasta
+│   │       ├── samplehaplotype_2.fasta
+│   │       ├── samplehaplotype_merged.fasta
+│   │       └── samplehaplotype_sorted.fasta
+│   └── plots
+│       ├── sample.fplot
+│       ├── sample.gp
+│       ├── sample.ps
+│       └── sample.rplot
+├── script
+│   ├── classiFasta.py
+│   └── countPhased.py
+└── Snakefile
