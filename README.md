@@ -49,9 +49,9 @@ Once your quality control are ok you can use the pipeline with
 ## results
 At the end of the pipeline you obtain a fasta file of the two haplotype and a graph of the two haplotype against the reference geneome:
 
-![graph](/sample.ps)
+![graph](img/sample.jpg)
 ******************
 ## directory tree structure
 After the pipeline finish you directory tree structure should look like the one in the tree.txt :
 
-![tree1](/tree1.png)    ![tree2](/tree2.png)
+![tree1](/img/tree1.png)    ![tree2](/img/tree2.png)
