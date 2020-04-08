@@ -46,7 +46,11 @@ Once your quality control are ok you can use the pipeline with
     - snakemake all -j 10
 
 ******************
+## results
+At the end of the pipeline you obtain a fasta file of the two haplotype and a graph of the two haplotype against the reference geneome:
 
+![graph](/sample.ps)
+******************
 ## directory tree structure
 After the pipeline finish you directory tree structure should look like the one in the tree.txt :
 

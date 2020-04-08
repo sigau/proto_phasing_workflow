@@ -1,0 +1,2786 @@
+%!PS-Adobe-2.0
+%%Title: result/plots/sample.ps
+%%Creator: gnuplot 5.0 patchlevel 3
+%%CreationDate: Wed Apr  8 14:48:03 2020
+%%DocumentFonts: (atend)
+%%BoundingBox: 50 50 554 770
+%%Orientation: Landscape
+%%Pages: (atend)
+%%EndComments
+%%BeginProlog
+/gnudict 256 dict def
+gnudict begin
+%
+% The following true/false flags may be edited by hand if desired.
+% The unit line width and grayscale image gamma correction may also be changed.
+%
+/Color true def
+/Blacktext false def
+/Solid false def
+/Dashlength 1 def
+/Landscape true def
+/Level1 false def
+/Level3 false def
+/Rounded false def
+/ClipToBoundingBox false def
+/SuppressPDFMark false def
+/TransparentPatterns false def
+/gnulinewidth 5.000 def
+/userlinewidth gnulinewidth def
+/Gamma 1.0 def
+/BackgroundColor {-1.000 -1.000 -1.000} def
+%
+/vshift -26 def
+/dl1 {
+  10.0 Dashlength userlinewidth gnulinewidth div mul mul mul
+  Rounded { currentlinewidth 0.75 mul sub dup 0 le { pop 0.01 } if } if
+} def
+/dl2 {
+  10.0 Dashlength userlinewidth gnulinewidth div mul mul mul
+  Rounded { currentlinewidth 0.75 mul add } if
+} def
+/hpt_ 31.5 def
+/vpt_ 31.5 def
+/hpt hpt_ def
+/vpt vpt_ def
+/doclip {
+  ClipToBoundingBox {
+    newpath 50 50 moveto 554 50 lineto 554 770 lineto 50 770 lineto closepath
+    clip
+  } if
+} def
+%
+% Gnuplot Prolog Version 5.1 (Oct 2015)
+%
+%/SuppressPDFMark true def
+%
+/M {moveto} bind def
+/L {lineto} bind def
+/R {rmoveto} bind def
+/V {rlineto} bind def
+/N {newpath moveto} bind def
+/Z {closepath} bind def
+/C {setrgbcolor} bind def
+/f {rlineto fill} bind def
+/g {setgray} bind def
+/Gshow {show} def   % May be redefined later in the file to support UTF-8
+/vpt2 vpt 2 mul def
+/hpt2 hpt 2 mul def
+/Lshow {currentpoint stroke M 0 vshift R 
+	Blacktext {gsave 0 setgray textshow grestore} {textshow} ifelse} def
+/Rshow {currentpoint stroke M dup stringwidth pop neg vshift R
+	Blacktext {gsave 0 setgray textshow grestore} {textshow} ifelse} def
+/Cshow {currentpoint stroke M dup stringwidth pop -2 div vshift R 
+	Blacktext {gsave 0 setgray textshow grestore} {textshow} ifelse} def
+/UP {dup vpt_ mul /vpt exch def hpt_ mul /hpt exch def
+  /hpt2 hpt 2 mul def /vpt2 vpt 2 mul def} def
+/DL {Color {setrgbcolor Solid {pop []} if 0 setdash}
+ {pop pop pop 0 setgray Solid {pop []} if 0 setdash} ifelse} def
+/BL {stroke userlinewidth 2 mul setlinewidth
+	Rounded {1 setlinejoin 1 setlinecap} if} def
+/AL {stroke userlinewidth 2 div setlinewidth
+	Rounded {1 setlinejoin 1 setlinecap} if} def
+/UL {dup gnulinewidth mul /userlinewidth exch def
+	dup 1 lt {pop 1} if 10 mul /udl exch def} def
+/PL {stroke userlinewidth setlinewidth
+	Rounded {1 setlinejoin 1 setlinecap} if} def
+3.8 setmiterlimit
+% Classic Line colors (version 5.0)
+/LCw {1 1 1} def
+/LCb {0 0 0} def
+/LCa {0 0 0} def
+/LC0 {1 0 0} def
+/LC1 {0 1 0} def
+/LC2 {0 0 1} def
+/LC3 {1 0 1} def
+/LC4 {0 1 1} def
+/LC5 {1 1 0} def
+/LC6 {0 0 0} def
+/LC7 {1 0.3 0} def
+/LC8 {0.5 0.5 0.5} def
+% Default dash patterns (version 5.0)
+/LTB {BL [] LCb DL} def
+/LTw {PL [] 1 setgray} def
+/LTb {PL [] LCb DL} def
+/LTa {AL [1 udl mul 2 udl mul] 0 setdash LCa setrgbcolor} def
+/LT0 {PL [] LC0 DL} def
+/LT1 {PL [2 dl1 3 dl2] LC1 DL} def
+/LT2 {PL [1 dl1 1.5 dl2] LC2 DL} def
+/LT3 {PL [6 dl1 2 dl2 1 dl1 2 dl2] LC3 DL} def
+/LT4 {PL [1 dl1 2 dl2 6 dl1 2 dl2 1 dl1 2 dl2] LC4 DL} def
+/LT5 {PL [4 dl1 2 dl2] LC5 DL} def
+/LT6 {PL [1.5 dl1 1.5 dl2 1.5 dl1 1.5 dl2 1.5 dl1 6 dl2] LC6 DL} def
+/LT7 {PL [3 dl1 3 dl2 1 dl1 3 dl2] LC7 DL} def
+/LT8 {PL [2 dl1 2 dl2 2 dl1 6 dl2] LC8 DL} def
+/SL {[] 0 setdash} def
+/Pnt {stroke [] 0 setdash gsave 1 setlinecap M 0 0 V stroke grestore} def
+/Dia {stroke [] 0 setdash 2 copy vpt add M
+  hpt neg vpt neg V hpt vpt neg V
+  hpt vpt V hpt neg vpt V closepath stroke
+  Pnt} def
+/Pls {stroke [] 0 setdash vpt sub M 0 vpt2 V
+  currentpoint stroke M
+  hpt neg vpt neg R hpt2 0 V stroke
+ } def
+/Box {stroke [] 0 setdash 2 copy exch hpt sub exch vpt add M
+  0 vpt2 neg V hpt2 0 V 0 vpt2 V
+  hpt2 neg 0 V closepath stroke
+  Pnt} def
+/Crs {stroke [] 0 setdash exch hpt sub exch vpt add M
+  hpt2 vpt2 neg V currentpoint stroke M
+  hpt2 neg 0 R hpt2 vpt2 V stroke} def
+/TriU {stroke [] 0 setdash 2 copy vpt 1.12 mul add M
+  hpt neg vpt -1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt 1.62 mul V closepath stroke
+  Pnt} def
+/Star {2 copy Pls Crs} def
+/BoxF {stroke [] 0 setdash exch hpt sub exch vpt add M
+  0 vpt2 neg V hpt2 0 V 0 vpt2 V
+  hpt2 neg 0 V closepath fill} def
+/TriUF {stroke [] 0 setdash vpt 1.12 mul add M
+  hpt neg vpt -1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt 1.62 mul V closepath fill} def
+/TriD {stroke [] 0 setdash 2 copy vpt 1.12 mul sub M
+  hpt neg vpt 1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt -1.62 mul V closepath stroke
+  Pnt} def
+/TriDF {stroke [] 0 setdash vpt 1.12 mul sub M
+  hpt neg vpt 1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt -1.62 mul V closepath fill} def
+/DiaF {stroke [] 0 setdash vpt add M
+  hpt neg vpt neg V hpt vpt neg V
+  hpt vpt V hpt neg vpt V closepath fill} def
+/Pent {stroke [] 0 setdash 2 copy gsave
+  translate 0 hpt M 4 {72 rotate 0 hpt L} repeat
+  closepath stroke grestore Pnt} def
+/PentF {stroke [] 0 setdash gsave
+  translate 0 hpt M 4 {72 rotate 0 hpt L} repeat
+  closepath fill grestore} def
+/Circle {stroke [] 0 setdash 2 copy
+  hpt 0 360 arc stroke Pnt} def
+/CircleF {stroke [] 0 setdash hpt 0 360 arc fill} def
+/C0 {BL [] 0 setdash 2 copy moveto vpt 90 450 arc} bind def
+/C1 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 0 90 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C2 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 90 180 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C3 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 0 180 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C4 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 180 270 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C5 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 0 90 arc
+	2 copy moveto
+	2 copy vpt 180 270 arc closepath fill
+	vpt 0 360 arc} bind def
+/C6 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 90 270 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C7 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 0 270 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C8 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 270 360 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C9 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 270 450 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C10 {BL [] 0 setdash 2 copy 2 copy moveto vpt 270 360 arc closepath fill
+	2 copy moveto
+	2 copy vpt 90 180 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C11 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 0 180 arc closepath fill
+	2 copy moveto
+	2 copy vpt 270 360 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C12 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 180 360 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C13 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 0 90 arc closepath fill
+	2 copy moveto
+	2 copy vpt 180 360 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C14 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 90 360 arc closepath fill
+	vpt 0 360 arc} bind def
+/C15 {BL [] 0 setdash 2 copy vpt 0 360 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/Rec {newpath 4 2 roll moveto 1 index 0 rlineto 0 exch rlineto
+	neg 0 rlineto closepath} bind def
+/Square {dup Rec} bind def
+/Bsquare {vpt sub exch vpt sub exch vpt2 Square} bind def
+/S0 {BL [] 0 setdash 2 copy moveto 0 vpt rlineto BL Bsquare} bind def
+/S1 {BL [] 0 setdash 2 copy vpt Square fill Bsquare} bind def
+/S2 {BL [] 0 setdash 2 copy exch vpt sub exch vpt Square fill Bsquare} bind def
+/S3 {BL [] 0 setdash 2 copy exch vpt sub exch vpt2 vpt Rec fill Bsquare} bind def
+/S4 {BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt Square fill Bsquare} bind def
+/S5 {BL [] 0 setdash 2 copy 2 copy vpt Square fill
+	exch vpt sub exch vpt sub vpt Square fill Bsquare} bind def
+/S6 {BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt vpt2 Rec fill Bsquare} bind def
+/S7 {BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt vpt2 Rec fill
+	2 copy vpt Square fill Bsquare} bind def
+/S8 {BL [] 0 setdash 2 copy vpt sub vpt Square fill Bsquare} bind def
+/S9 {BL [] 0 setdash 2 copy vpt sub vpt vpt2 Rec fill Bsquare} bind def
+/S10 {BL [] 0 setdash 2 copy vpt sub vpt Square fill 2 copy exch vpt sub exch vpt Square fill
+	Bsquare} bind def
+/S11 {BL [] 0 setdash 2 copy vpt sub vpt Square fill 2 copy exch vpt sub exch vpt2 vpt Rec fill
+	Bsquare} bind def
+/S12 {BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt2 vpt Rec fill Bsquare} bind def
+/S13 {BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt2 vpt Rec fill
+	2 copy vpt Square fill Bsquare} bind def
+/S14 {BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt2 vpt Rec fill
+	2 copy exch vpt sub exch vpt Square fill Bsquare} bind def
+/S15 {BL [] 0 setdash 2 copy Bsquare fill Bsquare} bind def
+/D0 {gsave translate 45 rotate 0 0 S0 stroke grestore} bind def
+/D1 {gsave translate 45 rotate 0 0 S1 stroke grestore} bind def
+/D2 {gsave translate 45 rotate 0 0 S2 stroke grestore} bind def
+/D3 {gsave translate 45 rotate 0 0 S3 stroke grestore} bind def
+/D4 {gsave translate 45 rotate 0 0 S4 stroke grestore} bind def
+/D5 {gsave translate 45 rotate 0 0 S5 stroke grestore} bind def
+/D6 {gsave translate 45 rotate 0 0 S6 stroke grestore} bind def
+/D7 {gsave translate 45 rotate 0 0 S7 stroke grestore} bind def
+/D8 {gsave translate 45 rotate 0 0 S8 stroke grestore} bind def
+/D9 {gsave translate 45 rotate 0 0 S9 stroke grestore} bind def
+/D10 {gsave translate 45 rotate 0 0 S10 stroke grestore} bind def
+/D11 {gsave translate 45 rotate 0 0 S11 stroke grestore} bind def
+/D12 {gsave translate 45 rotate 0 0 S12 stroke grestore} bind def
+/D13 {gsave translate 45 rotate 0 0 S13 stroke grestore} bind def
+/D14 {gsave translate 45 rotate 0 0 S14 stroke grestore} bind def
+/D15 {gsave translate 45 rotate 0 0 S15 stroke grestore} bind def
+/DiaE {stroke [] 0 setdash vpt add M
+  hpt neg vpt neg V hpt vpt neg V
+  hpt vpt V hpt neg vpt V closepath stroke} def
+/BoxE {stroke [] 0 setdash exch hpt sub exch vpt add M
+  0 vpt2 neg V hpt2 0 V 0 vpt2 V
+  hpt2 neg 0 V closepath stroke} def
+/TriUE {stroke [] 0 setdash vpt 1.12 mul add M
+  hpt neg vpt -1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt 1.62 mul V closepath stroke} def
+/TriDE {stroke [] 0 setdash vpt 1.12 mul sub M
+  hpt neg vpt 1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt -1.62 mul V closepath stroke} def
+/PentE {stroke [] 0 setdash gsave
+  translate 0 hpt M 4 {72 rotate 0 hpt L} repeat
+  closepath stroke grestore} def
+/CircE {stroke [] 0 setdash 
+  hpt 0 360 arc stroke} def
+/Opaque {gsave closepath 1 setgray fill grestore 0 setgray closepath} def
+/DiaW {stroke [] 0 setdash vpt add M
+  hpt neg vpt neg V hpt vpt neg V
+  hpt vpt V hpt neg vpt V Opaque stroke} def
+/BoxW {stroke [] 0 setdash exch hpt sub exch vpt add M
+  0 vpt2 neg V hpt2 0 V 0 vpt2 V
+  hpt2 neg 0 V Opaque stroke} def
+/TriUW {stroke [] 0 setdash vpt 1.12 mul add M
+  hpt neg vpt -1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt 1.62 mul V Opaque stroke} def
+/TriDW {stroke [] 0 setdash vpt 1.12 mul sub M
+  hpt neg vpt 1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt -1.62 mul V Opaque stroke} def
+/PentW {stroke [] 0 setdash gsave
+  translate 0 hpt M 4 {72 rotate 0 hpt L} repeat
+  Opaque stroke grestore} def
+/CircW {stroke [] 0 setdash 
+  hpt 0 360 arc Opaque stroke} def
+/BoxFill {gsave Rec 1 setgray fill grestore} def
+/Density {
+  /Fillden exch def
+  currentrgbcolor
+  /ColB exch def /ColG exch def /ColR exch def
+  /ColR ColR Fillden mul Fillden sub 1 add def
+  /ColG ColG Fillden mul Fillden sub 1 add def
+  /ColB ColB Fillden mul Fillden sub 1 add def
+  ColR ColG ColB setrgbcolor} def
+/BoxColFill {gsave Rec PolyFill} def
+/PolyFill {gsave Density fill grestore grestore} def
+/h {rlineto rlineto rlineto gsave closepath fill grestore} bind def
+%
+% PostScript Level 1 Pattern Fill routine for rectangles
+% Usage: x y w h s a XX PatternFill
+%	x,y = lower left corner of box to be filled
+%	w,h = width and height of box
+%	  a = angle in degrees between lines and x-axis
+%	 XX = 0/1 for no/yes cross-hatch
+%
+/PatternFill {gsave /PFa [ 9 2 roll ] def
+  PFa 0 get PFa 2 get 2 div add PFa 1 get PFa 3 get 2 div add translate
+  PFa 2 get -2 div PFa 3 get -2 div PFa 2 get PFa 3 get Rec
+  TransparentPatterns {} {gsave 1 setgray fill grestore} ifelse
+  clip
+  currentlinewidth 0.5 mul setlinewidth
+  /PFs PFa 2 get dup mul PFa 3 get dup mul add sqrt def
+  0 0 M PFa 5 get rotate PFs -2 div dup translate
+  0 1 PFs PFa 4 get div 1 add floor cvi
+	{PFa 4 get mul 0 M 0 PFs V} for
+  0 PFa 6 get ne {
+	0 1 PFs PFa 4 get div 1 add floor cvi
+	{PFa 4 get mul 0 2 1 roll M PFs 0 V} for
+ } if
+  stroke grestore} def
+%
+/languagelevel where
+ {pop languagelevel} {1} ifelse
+dup 2 lt
+	{/InterpretLevel1 true def
+	 /InterpretLevel3 false def}
+	{/InterpretLevel1 Level1 def
+	 2 gt
+	    {/InterpretLevel3 Level3 def}
+	    {/InterpretLevel3 false def}
+	 ifelse }
+ ifelse
+%
+% PostScript level 2 pattern fill definitions
+%
+/Level2PatternFill {
+/Tile8x8 {/PaintType 2 /PatternType 1 /TilingType 1 /BBox [0 0 8 8] /XStep 8 /YStep 8}
+	bind def
+/KeepColor {currentrgbcolor [/Pattern /DeviceRGB] setcolorspace} bind def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop 0 0 M 8 8 L 0 8 M 8 0 L stroke} 
+>> matrix makepattern
+/Pat1 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop 0 0 M 8 8 L 0 8 M 8 0 L stroke
+	0 4 M 4 8 L 8 4 L 4 0 L 0 4 L stroke}
+>> matrix makepattern
+/Pat2 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop 0 0 M 0 8 L
+	8 8 L 8 0 L 0 0 L fill}
+>> matrix makepattern
+/Pat3 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop -4 8 M 8 -4 L
+	0 12 M 12 0 L stroke}
+>> matrix makepattern
+/Pat4 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop -4 0 M 8 12 L
+	0 -4 M 12 8 L stroke}
+>> matrix makepattern
+/Pat5 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop -2 8 M 4 -4 L
+	0 12 M 8 -4 L 4 12 M 10 0 L stroke}
+>> matrix makepattern
+/Pat6 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop -2 0 M 4 12 L
+	0 -4 M 8 12 L 4 -4 M 10 8 L stroke}
+>> matrix makepattern
+/Pat7 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop 8 -2 M -4 4 L
+	12 0 M -4 8 L 12 4 M 0 10 L stroke}
+>> matrix makepattern
+/Pat8 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop 0 -2 M 12 4 L
+	-4 0 M 12 8 L -4 4 M 8 10 L stroke}
+>> matrix makepattern
+/Pat9 exch def
+/Pattern1 {PatternBgnd KeepColor Pat1 setpattern} bind def
+/Pattern2 {PatternBgnd KeepColor Pat2 setpattern} bind def
+/Pattern3 {PatternBgnd KeepColor Pat3 setpattern} bind def
+/Pattern4 {PatternBgnd KeepColor Landscape {Pat5} {Pat4} ifelse setpattern} bind def
+/Pattern5 {PatternBgnd KeepColor Landscape {Pat4} {Pat5} ifelse setpattern} bind def
+/Pattern6 {PatternBgnd KeepColor Landscape {Pat9} {Pat6} ifelse setpattern} bind def
+/Pattern7 {PatternBgnd KeepColor Landscape {Pat8} {Pat7} ifelse setpattern} bind def
+} def
+%
+%
+%End of PostScript Level 2 code
+%
+/PatternBgnd {
+  TransparentPatterns {} {gsave 1 setgray fill grestore} ifelse
+} def
+%
+% Substitute for Level 2 pattern fill codes with
+% grayscale if Level 2 support is not selected.
+%
+/Level1PatternFill {
+/Pattern1 {0.250 Density} bind def
+/Pattern2 {0.500 Density} bind def
+/Pattern3 {0.750 Density} bind def
+/Pattern4 {0.125 Density} bind def
+/Pattern5 {0.375 Density} bind def
+/Pattern6 {0.625 Density} bind def
+/Pattern7 {0.875 Density} bind def
+} def
+%
+% Now test for support of Level 2 code
+%
+Level1 {Level1PatternFill} {Level2PatternFill} ifelse
+%
+/Symbol-Oblique /Symbol findfont [1 0 .167 1 0 0] makefont
+dup length dict begin {1 index /FID eq {pop pop} {def} ifelse} forall
+currentdict end definefont pop
+%
+/MFshow {
+   { dup 5 get 3 ge
+     { 5 get 3 eq {gsave} {grestore} ifelse }
+     {dup dup 0 get findfont exch 1 get scalefont setfont
+     [ currentpoint ] exch dup 2 get 0 exch R dup 5 get 2 ne {dup dup 6
+     get exch 4 get {textshow} {stringwidth pop 0 R} ifelse }if dup 5 get 0 eq
+     {dup 3 get {2 get neg 0 exch R pop} {pop aload pop M} ifelse} {dup 5
+     get 1 eq {dup 2 get exch dup 3 get exch 6 get stringwidth pop -2 div
+     dup 0 R} {dup 6 get stringwidth pop -2 div 0 R 6 get
+     textshow 2 index {aload pop M neg 3 -1 roll neg R pop pop} {pop pop pop
+     pop aload pop M} ifelse }ifelse }ifelse }
+     ifelse }
+   forall} def
+/Gswidth {dup type /stringtype eq {stringwidth} {pop (n) stringwidth} ifelse} def
+/MFwidth {0 exch { dup 5 get 3 ge { 5 get 3 eq { 0 } { pop } ifelse }
+ {dup 3 get{dup dup 0 get findfont exch 1 get scalefont setfont
+     6 get Gswidth pop add} {pop} ifelse} ifelse} forall} def
+/MLshow { currentpoint stroke M
+  0 exch R
+  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
+/MRshow { currentpoint stroke M
+  exch dup MFwidth neg 3 -1 roll R
+  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
+/MCshow { currentpoint stroke M
+  exch dup MFwidth -2 div 3 -1 roll R
+  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
+/XYsave    { [( ) 1 2 true false 3 ()] } bind def
+/XYrestore { [( ) 1 2 true false 4 ()] } bind def
+Level1 SuppressPDFMark or 
+{} {
+/SDict 10 dict def
+systemdict /pdfmark known not {
+  userdict /pdfmark systemdict /cleartomark get put
+} if
+SDict begin [
+  /Title (result/plots/sample.ps)
+  /Subject (gnuplot plot)
+  /Creator (gnuplot 5.0 patchlevel 3)
+  /Author (gautier16)
+%  /Producer (gnuplot)
+%  /Keywords ()
+  /CreationDate (Wed Apr  8 14:48:03 2020)
+  /DOCINFO pdfmark
+end
+} ifelse
+%
+% Support for boxed text - Ethan A Merritt May 2005
+%
+/InitTextBox { userdict /TBy2 3 -1 roll put userdict /TBx2 3 -1 roll put
+           userdict /TBy1 3 -1 roll put userdict /TBx1 3 -1 roll put
+	   /Boxing true def } def
+/ExtendTextBox { Boxing
+    { gsave dup false charpath pathbbox
+      dup TBy2 gt {userdict /TBy2 3 -1 roll put} {pop} ifelse
+      dup TBx2 gt {userdict /TBx2 3 -1 roll put} {pop} ifelse
+      dup TBy1 lt {userdict /TBy1 3 -1 roll put} {pop} ifelse
+      dup TBx1 lt {userdict /TBx1 3 -1 roll put} {pop} ifelse
+      grestore } if } def
+/PopTextBox { newpath TBx1 TBxmargin sub TBy1 TBymargin sub M
+               TBx1 TBxmargin sub TBy2 TBymargin add L
+	       TBx2 TBxmargin add TBy2 TBymargin add L
+	       TBx2 TBxmargin add TBy1 TBymargin sub L closepath } def
+/DrawTextBox { PopTextBox stroke /Boxing false def} def
+/FillTextBox { gsave PopTextBox 1 1 1 setrgbcolor fill grestore /Boxing false def} def
+0 0 0 0 InitTextBox
+/TBxmargin 20 def
+/TBymargin 20 def
+/Boxing false def
+/textshow { ExtendTextBox Gshow } def
+%
+% redundant definitions for compatibility with prologue.ps older than 5.0.2
+/LTB {BL [] LCb DL} def
+/LTb {PL [] LCb DL} def
+end
+%%EndProlog
+%%Page: 1 1
+gnudict begin
+gsave
+doclip
+50 50 translate
+0.100 0.100 scale
+90 rotate
+0 -5040 translate
+0 setgray
+newpath
+(Courier) findfont 80 scalefont setfont
+BackgroundColor 0 lt 3 1 roll 0 lt exch 0 lt or or not {gsave BackgroundColor C clippath fill grestore} if
+gsave % colour palette begin
+/maxcolors 0 def
+/HSV2RGB {  exch dup 0.0 eq {pop exch pop dup dup} % achromatic gray
+  { /HSVs exch def /HSVv exch def 6.0 mul dup floor dup 3 1 roll sub
+     /HSVf exch def /HSVi exch cvi def /HSVp HSVv 1.0 HSVs sub mul def
+	 /HSVq HSVv 1.0 HSVs HSVf mul sub mul def 
+	 /HSVt HSVv 1.0 HSVs 1.0 HSVf sub mul sub mul def
+	 /HSVi HSVi 6 mod def 0 HSVi eq {HSVv HSVt HSVp}
+	 {1 HSVi eq {HSVq HSVv HSVp}{2 HSVi eq {HSVp HSVv HSVt}
+	 {3 HSVi eq {HSVp HSVq HSVv}{4 HSVi eq {HSVt HSVp HSVv}
+	 {HSVv HSVp HSVq} ifelse} ifelse} ifelse} ifelse} ifelse
+  } ifelse} def
+/Constrain {
+  dup 0 lt {0 exch pop}{dup 1 gt {1 exch pop} if} ifelse} def
+/YIQ2RGB {
+  3 copy -1.702 mul exch -1.105 mul add add Constrain 4 1 roll
+  3 copy -0.647 mul exch -0.272 mul add add Constrain 5 1 roll
+  0.621 mul exch -0.956 mul add add Constrain 3 1 roll } def
+/CMY2RGB {  1 exch sub exch 1 exch sub 3 2 roll 1 exch sub 3 1 roll exch } def
+/XYZ2RGB {  3 copy -0.9017 mul exch -0.1187 mul add exch 0.0585 mul exch add
+  Constrain 4 1 roll 3 copy -0.0279 mul exch 1.999 mul add exch
+  -0.9844 mul add Constrain 5 1 roll -0.2891 mul exch -0.5338 mul add
+  exch 1.91 mul exch add Constrain 3 1 roll} def
+/SelectSpace {ColorSpace (HSV) eq {HSV2RGB}{ColorSpace (XYZ) eq {
+  XYZ2RGB}{ColorSpace (CMY) eq {CMY2RGB}{ColorSpace (YIQ) eq {YIQ2RGB}
+  if} ifelse} ifelse} ifelse} def
+/InterpolatedColor true def
+/grayindex {/gidx 0 def
+  {GrayA gidx get grayv ge {exit} if /gidx gidx 1 add def} loop} def
+/dgdx {grayv GrayA gidx get sub GrayA gidx 1 sub get
+  GrayA gidx get sub div} def 
+/redvalue {RedA gidx get RedA gidx 1 sub get
+  RedA gidx get sub dgdxval mul add} def
+/greenvalue {GreenA gidx get GreenA gidx 1 sub get
+  GreenA gidx get sub dgdxval mul add} def
+/bluevalue {BlueA gidx get BlueA gidx 1 sub get
+  BlueA gidx get sub dgdxval mul add} def
+/interpolate {
+  grayindex grayv GrayA gidx get sub abs 1e-5 le
+    {RedA gidx get GreenA gidx get BlueA gidx get}
+    {/dgdxval dgdx def redvalue greenvalue bluevalue} ifelse} def
+/GrayA [0 .4 .6 .7 .8 .9 1 ] def
+/RedA [0 .8667 0 0 0 .8667 .8667 ] def
+/GreenA [0 0 0 .8667 .8667 .8667 0 ] def
+/BlueA [0 .8667 .8667 .8667 0 0 0 ] def
+/pm3dround {maxcolors 0 gt {dup 1 ge
+	{pop 1} {maxcolors mul floor maxcolors 1 sub div} ifelse} if} def
+/pm3dGamma 1.0 1.5 Gamma mul div def
+/ColorSpace (RGB) def
+Color InterpolatedColor or { % COLOUR vs. GRAY map
+  InterpolatedColor { %% Interpolation vs. RGB-Formula
+    /g {stroke pm3dround /grayv exch def interpolate
+        SelectSpace setrgbcolor} bind def
+  }{
+  /g {stroke pm3dround dup cF7 Constrain exch dup cF5 Constrain exch cF15 Constrain 
+       SelectSpace setrgbcolor} bind def
+  } ifelse
+}{
+  /g {stroke pm3dround pm3dGamma exp setgray} bind def
+} ifelse
+1.000 UL
+LTb
+LCb setrgbcolor
+1.000 UP
+% Begin plot #1
+4.000 UL
+LTb
+0 g % End plot #1
+% Begin plot #2
+4.000 UL
+LTb
+0 g .8438 g 6401 4467 M
+-1 0 V
+% End plot #2
+% Begin plot #3
+stroke
+LTb
+0 g .8438 g 6401 4480 M
+-1 0 V
+% End plot #3
+% Begin plot #4
+stroke
+LTb
+0 g .8684 g 2708 2057 M
+% End plot #4
+% Begin plot #5
+stroke
+LTb
+0 g .8695 g 3830 2165 M
+-1 0 V
+% End plot #5
+% Begin plot #6
+stroke
+LTb
+0 g .8742 g 6400 4480 M
+% End plot #6
+% Begin plot #7
+stroke
+LTb
+0 g .8748 g 1426 2165 M
+-1 0 V
+% End plot #7
+% Begin plot #8
+stroke
+LTb
+0 g .8763 g 6400 4467 M
+% End plot #8
+% Begin plot #9
+stroke
+LTb
+0 g .9065 g 6363 4467 M
+-1 0 V
+% End plot #9
+% Begin plot #10
+stroke
+LTb
+0 g .9076 g 6363 4454 M
+-1 0 V
+% End plot #10
+% Begin plot #11
+stroke
+LTb
+0 g .9118 g 1280 2413 M
+% End plot #11
+% Begin plot #12
+stroke
+LTb
+0 g .9214 g 6363 4454 M
+-1 0 V
+% End plot #12
+% Begin plot #13
+stroke
+LTb
+0 g .9214 g 6363 4467 M
+-1 0 V
+% End plot #13
+% Begin plot #14
+stroke
+LTb
+0 g .9258 g 5435 3986 M
+-6 -2 V
+% End plot #14
+% Begin plot #15
+stroke
+LTb
+0 g .9336 g 6366 4468 M
+-3 -1 V
+% End plot #15
+% Begin plot #16
+stroke
+LTb
+0 g .9342 g 6366 4455 M
+-3 -1 V
+% End plot #16
+% Begin plot #17
+stroke
+LTb
+0 g .9385 g 6400 4480 M
+-3 -1 V
+% End plot #17
+% Begin plot #18
+stroke
+LTb
+0 g .9393 g 6400 4467 M
+-3 -1 V
+% End plot #18
+% Begin plot #19
+stroke
+LTb
+0 g .941 g 6392 4477 M
+-2 0 V
+% End plot #19
+% Begin plot #20
+stroke
+LTb
+0 g .9419 g 6392 4464 M
+-2 -1 V
+% End plot #20
+% Begin plot #21
+stroke
+LTb
+0 g .942 g 6386 4475 M
+-4 -1 V
+% End plot #21
+% Begin plot #22
+stroke
+LTb
+0 g .9479 g 6371 4470 M
+-5 -1 V
+% End plot #22
+% Begin plot #23
+stroke
+LTb
+0 g .9481 g 6395 4478 M
+-3 -1 V
+% End plot #23
+% Begin plot #24
+stroke
+LTb
+0 g .9484 g 6287 4278 M
+% End plot #24
+% Begin plot #25
+stroke
+LTb
+0 g .9484 g 6287 4428 M
+% End plot #25
+% Begin plot #26
+stroke
+LTb
+0 g .9502 g 6395 4465 M
+-3 -1 V
+% End plot #26
+% Begin plot #27
+stroke
+LTb
+0 g .9509 g 6397 4479 M
+-2 -1 V
+% End plot #27
+% Begin plot #28
+stroke
+LTb
+0 g .9512 g 6397 4466 M
+-2 -1 V
+% End plot #28
+% Begin plot #29
+stroke
+LTb
+0 g .9519 g 6371 4457 M
+-5 -2 V
+% End plot #29
+% Begin plot #30
+stroke
+LTb
+0 g .9562 g 813 681 M
+-14 -5 V
+% End plot #30
+% Begin plot #31
+stroke
+LTb
+0 g .9563 g 6390 4463 M
+-8 -2 V
+% End plot #31
+% Begin plot #32
+stroke
+LTb
+0 g .9611 g 3487 2483 M
+-11 -4 V
+% End plot #32
+% Begin plot #33
+stroke
+LTb
+0 g .9654 g 1426 1069 M
+-10 -3 V
+% End plot #33
+% Begin plot #34
+stroke
+LTb
+0 g .9657 g 6377 4472 M
+-4 -1 V
+% End plot #34
+% Begin plot #35
+stroke
+LTb
+0 g .9658 g 6377 4459 M
+-4 -1 V
+% End plot #35
+% Begin plot #36
+stroke
+LTb
+0 g .969 g 3302 2420 M
+-18 -7 V
+% End plot #36
+% Begin plot #37
+stroke
+LTb
+0 g .9714 g 6390 4477 M
+-4 -2 V
+% End plot #37
+% Begin plot #38
+stroke
+LTb
+0 g .9728 g 6378 4473 M
+-1 -1 V
+% End plot #38
+% Begin plot #39
+stroke
+LTb
+0 g .9732 g 5429 3984 M
+-7 -2 V
+% End plot #39
+% Begin plot #40
+stroke
+LTb
+0 g .9735 g 6366 4455 M
+% End plot #40
+% Begin plot #41
+stroke
+LTb
+0 g .9735 g 6366 4469 M
+0 -1 V
+% End plot #41
+% Begin plot #42
+stroke
+LTb
+0 g .9751 g 4137 2928 M
+-9 -3 V
+% End plot #42
+% Begin plot #43
+stroke
+LTb
+0 g .9796 g 6378 4459 M
+-1 0 V
+% End plot #43
+% Begin plot #44
+stroke
+LTb
+0 g .9807 g 905 712 M
+-20 -6 V
+% End plot #44
+% Begin plot #45
+stroke
+LTb
+0 g .9829 g 3284 2344 M
+-18 -6 V
+% End plot #45
+% Begin plot #46
+stroke
+LTb
+0 g .983 g 3830 2718 M
+-5 -2 V
+% End plot #46
+% Begin plot #47
+stroke
+LTb
+0 g .9844 g 3476 2479 M
+-12 -4 V
+% End plot #47
+% Begin plot #48
+stroke
+LTb
+0 g .9855 g 5422 3809 M
+-30 -10 V
+% End plot #48
+% Begin plot #49
+stroke
+LTb
+0 g .9859 g 6373 4458 M
+-2 -1 V
+% End plot #49
+% Begin plot #50
+stroke
+LTb
+0 g .9859 g 6373 4471 M
+-2 -1 V
+% End plot #50
+% Begin plot #51
+stroke
+LTb
+0 g .9866 g 1426 1019 M
+-10 -3 V
+% End plot #51
+% Begin plot #52
+stroke
+LTb
+0 g .9868 g 3106 2283 M
+-81 -28 V
+% End plot #52
+% Begin plot #53
+stroke
+LTb
+0 g .987 g 5060 3561 M
+-6 -2 V
+% End plot #53
+% Begin plot #54
+stroke
+LTb
+0 g .9874 g 5392 3675 M
+-12 -4 V
+% End plot #54
+% Begin plot #55
+stroke
+LTb
+0 g .9875 g 5392 3799 M
+-12 -4 V
+% End plot #55
+% Begin plot #56
+stroke
+LTb
+0 g .9875 g 2574 2012 M
+-52 -18 V
+% End plot #56
+% Begin plot #57
+stroke
+LTb
+0 g .9876 g 1280 1019 M
+66 23 V
+% End plot #57
+% Begin plot #58
+stroke
+LTb
+0 g .9877 g 3581 2632 M
+-94 -32 V
+% End plot #58
+% Begin plot #59
+stroke
+LTb
+0 g .9881 g 4915 3511 M
+-10 -3 V
+% End plot #59
+% Begin plot #60
+stroke
+LTb
+0 g .9881 g 3464 2475 M
+-162 -55 V
+% End plot #60
+% Begin plot #61
+stroke
+LTb
+0 g .9887 g 3021 2165 M
+-20 -7 V
+% End plot #61
+% Begin plot #62
+stroke
+LTb
+0 g .9887 g 2522 1821 M
+-124 -42 V
+% End plot #62
+% Begin plot #63
+stroke
+LTb
+0 g .989 g 885 706 M
+813 681 L
+% End plot #63
+% Begin plot #64
+stroke
+LTb
+0 g .9892 g 5619 4049 M
+-20 -7 V
+% End plot #64
+% Begin plot #65
+stroke
+LTb
+0 g .9894 g 4185 3115 M
+-48 -16 V
+% End plot #65
+% Begin plot #66
+stroke
+LTb
+0 g .9895 g 6362 4454 M
+-65 -22 V
+% End plot #66
+% Begin plot #67
+stroke
+LTb
+0 g .9897 g 3621 2646 M
+-41 -14 V
+% End plot #67
+% Begin plot #68
+stroke
+LTb
+0 g .9898 g 3895 2845 M
+-65 -22 V
+% End plot #68
+% Begin plot #69
+stroke
+LTb
+0 g .9898 g 2708 2057 M
+-19 -6 V
+% End plot #69
+% Begin plot #70
+stroke
+LTb
+0 g .9899 g 905 676 M
+-20 -7 V
+% End plot #70
+% Begin plot #71
+stroke
+LTb
+0 g .99 g 1416 1066 M
+-12 -4 V
+% End plot #71
+% Begin plot #72
+stroke
+LTb
+0 g .9901 g 2689 2051 M
+-115 -39 V
+% End plot #72
+% Begin plot #73
+stroke
+LTb
+0 g .9901 g 4044 2896 M
+-71 -24 V
+% End plot #73
+% Begin plot #74
+stroke
+LTb
+0 g .9903 g 5054 3559 M
+-139 -48 V
+% End plot #74
+% Begin plot #75
+stroke
+LTb
+0 g .9903 g 5599 4042 M
+-53 -18 V
+% End plot #75
+% Begin plot #76
+stroke
+LTb
+0 g .9904 g 2286 1698 M
+-78 -27 V
+% End plot #76
+% Begin plot #77
+stroke
+LTb
+0 g .9906 g 5531 4019 M
+-96 -33 V
+% End plot #77
+% Begin plot #78
+stroke
+LTb
+0 g .9907 g 4905 3508 M
+-35 -12 V
+% End plot #78
+% Begin plot #79
+stroke
+LTb
+0 g .9909 g 885 669 M
+799 640 L
+% End plot #79
+% Begin plot #80
+stroke
+LTb
+0 g .991 g 2213 1673 M
+-81 -28 V
+% End plot #80
+% Begin plot #81
+stroke
+LTb
+0 g .9912 g 2398 1736 M
+-112 -38 V
+% End plot #81
+% Begin plot #82
+stroke
+LTb
+0 g .9913 g 2049 1525 M
+1426 1312 L
+% End plot #82
+% Begin plot #83
+stroke
+LTb
+0 g .9913 g 6302 4433 M
+-15 -5 V
+% End plot #83
+% Begin plot #84
+stroke
+LTb
+0 g .9914 g 1280 969 M
+906 841 L
+% End plot #84
+% Begin plot #85
+stroke
+LTb
+0 g .9915 g 5696 4076 M
+-77 -27 V
+% End plot #85
+% Begin plot #86
+stroke
+LTb
+0 g .9915 g 906 841 M
+-1 0 V
+% End plot #86
+% Begin plot #87
+stroke
+LTb
+0 g .9915 g 1404 1062 M
+-58 -20 V
+% End plot #87
+% Begin plot #88
+stroke
+LTb
+0 g .9916 g 5345 3783 M
+-285 -98 V
+% End plot #88
+% Begin plot #89
+stroke
+LTb
+0 g .9917 g 4128 2925 M
+-89 -30 V
+% End plot #89
+% Begin plot #90
+stroke
+LTb
+0 g .9917 g 5435 3814 M
+-13 -5 V
+% End plot #90
+% Begin plot #91
+stroke
+LTb
+0 g .9917 g 3671 2663 M
+-50 -17 V
+% End plot #91
+% Begin plot #92
+stroke
+LTb
+0 g .9922 g 2132 1554 M
+-83 -29 V
+% End plot #92
+% Begin plot #93
+stroke
+LTb
+0 g .9923 g 2767 2077 M
+-59 -20 V
+% End plot #93
+% Begin plot #94
+stroke
+LTb
+0 g .9923 g 2894 2121 M
+-6 -2 V
+% End plot #94
+% Begin plot #95
+stroke
+LTb
+0 g .9923 g 3186 2310 M
+-80 -27 V
+% End plot #95
+% Begin plot #96
+stroke
+LTb
+0 g .9923 g 3895 2845 M
+78 27 V
+% End plot #96
+% Begin plot #97
+stroke
+LTb
+0 g .9924 g 937 723 M
+905 712 L
+% End plot #97
+% Begin plot #98
+stroke
+LTb
+0 g .9924 g 5385 3797 M
+-40 -14 V
+% End plot #98
+% Begin plot #99
+stroke
+LTb
+0 g .9924 g 2888 2119 M
+-122 -42 V
+% End plot #99
+% Begin plot #100
+stroke
+LTb
+0 g .9924 g 4694 3436 M
+-60 -21 V
+% End plot #100
+% Begin plot #101
+stroke
+LTb
+0 g .9926 g 3266 2338 M
+-84 -29 V
+% End plot #101
+% Begin plot #102
+stroke
+LTb
+0 g .9926 g 6382 4461 M
+-4 -2 V
+% End plot #102
+% Begin plot #103
+stroke
+LTb
+0 g .9926 g 4634 3269 M
+4185 3115 L
+% End plot #103
+% Begin plot #104
+stroke
+LTb
+0 g .9927 g 5546 4024 M
+-16 -5 V
+% End plot #104
+% Begin plot #105
+stroke
+LTb
+0 g .9927 g 6382 4474 M
+-4 -1 V
+% End plot #105
+% Begin plot #106
+stroke
+LTb
+0 g .9927 g 3830 2718 M
+-159 -55 V
+% End plot #106
+% Begin plot #107
+stroke
+LTb
+0 g .9927 g 3266 2249 M
+18 6 V
+% End plot #107
+% Begin plot #108
+stroke
+LTb
+0 g .9928 g 5696 4076 M
+229 78 V
+% End plot #108
+% Begin plot #109
+stroke
+LTb
+0 g .9928 g 3005 2159 M
+-111 -38 V
+% End plot #109
+% Begin plot #110
+stroke
+LTb
+0 g .9928 g 4694 3436 M
+176 60 V
+% End plot #110
+% Begin plot #111
+stroke
+LTb
+0 g .9931 g 3005 1987 M
+-117 -40 V
+% End plot #111
+% Begin plot #112
+stroke
+LTb
+0 g .9932 g 5422 3685 M
+-30 -10 V
+% End plot #112
+% Begin plot #113
+stroke
+LTb
+0 g .9933 g 6287 4428 M
+5925 4304 L
+% End plot #113
+% Begin plot #114
+stroke
+LTb
+0 g .9937 g 3487 2413 M
+-22 -7 V
+% End plot #114
+% Begin plot #115
+stroke
+LTb
+0 g .9938 g 3025 1994 M
+-24 -9 V
+% End plot #115
+% Begin plot #116
+stroke
+LTb
+0 g .9941 g 1404 1012 M
+-58 -20 V
+% End plot #116
+% Begin plot #117
+stroke
+LTb
+0 g .995 g 4694 3290 M
+-60 -21 V
+% End plot #117
+% Begin plot #118
+stroke
+LTb
+0 g .9953 g 4634 3099 M
+4185 2945 L
+% End plot #118
+% Begin plot #119
+stroke
+LTb
+0 g .9954 g 2888 1947 M
+2522 1821 L
+% End plot #119
+% Begin plot #120
+stroke
+LTb
+0 g .9955 g 4137 2823 M
+-164 -56 V
+% End plot #120
+% Begin plot #121
+stroke
+LTb
+0 g .9958 g 2522 1779 M
+-124 -43 V
+% End plot #121
+% Begin plot #122
+stroke
+LTb
+0 g .9959 g 4185 2945 M
+-48 -17 V
+% End plot #122
+% Begin plot #123
+stroke
+LTb
+0 g .996 g 3465 2406 M
+-181 -62 V
+% End plot #123
+% Begin plot #124
+stroke
+LTb
+0 g .9963 g 3973 2767 M
+-78 -27 V
+% End plot #124
+% Begin plot #125
+stroke
+LTb
+0 g .9964 g 1280 841 M
+937 723 L
+% End plot #125
+% Begin plot #126
+stroke
+LTb
+0 g .9965 g 2132 1312 M
+1426 1069 L
+% End plot #126
+% Begin plot #127
+stroke
+LTb
+0 g .9965 g 3830 2600 M
+-209 -71 V
+% End plot #127
+% Begin plot #128
+stroke
+LTb
+0 g .9968 g 5925 3982 M
+5435 3814 L
+% End plot #128
+% Begin plot #129
+stroke
+LTb
+0 g .9968 g 5385 3673 M
+5060 3561 L
+% End plot #129
+% Begin plot #130
+stroke
+LTb
+0 g .9969 g 5060 3415 M
+4694 3290 L
+% End plot #130
+% Begin plot #131
+stroke
+LTb
+0 g .9969 g 2132 1554 M
+266 91 V
+% End plot #131
+% Begin plot #132
+stroke
+LTb
+0 g .997 g 6287 4278 M
+5925 4154 L
+% End plot #132
+% Begin plot #133
+stroke
+LTb
+0 g .9972 g 3266 2249 M
+-241 -83 V
+% End plot #133
+% Begin plot #134
+stroke
+LTb
+0 g .9972 g 1346 992 M
+-66 -23 V
+% End plot #134
+% Begin plot #135
+stroke
+LTb
+0 g .9973 g 3621 2529 M
+-134 -46 V
+% End plot #135
+% Begin plot #136
+stroke
+LTb
+0 g .9974 g 3895 2740 M
+-65 -22 V
+% End plot #136
+% Begin plot #137
+stroke
+LTb
+0 g .9975 g 6362 4304 M
+-75 -26 V
+% End plot #137
+% Begin plot #138
+stroke
+LTb
+0 g .9984 g 1416 1016 M
+-12 -4 V
+% End plot #138
+% Begin plot #139
+stroke
+LTb
+0 g 1 g 937 3429 M
+% End plot #139
+% Begin plot #140
+stroke
+LTb
+0 g % End plot #140
+% Begin plot #141
+4.000 UL
+LTb
+0 g .8549 g 6363 4477 M
+% End plot #141
+% Begin plot #142
+stroke
+LTb
+0 g .8772 g 4799 1016 M
+% End plot #142
+% Begin plot #143
+stroke
+LTb
+0 g .8772 g 4799 1066 M
+% End plot #143
+% Begin plot #144
+stroke
+LTb
+0 g .9836 g 6377 4459 M
+% End plot #144
+% Begin plot #145
+stroke
+LTb
+0 g .9997 g 5063 2165 M
+-3 1 V
+% End plot #145
+stroke
+0.500 UL
+LTa
+LCa setrgbcolor
+799 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 640 M
+stroke
+LTb
+LCb setrgbcolor
+799 4480 M
+stroke
+799 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01133|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+905 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+905 640 M
+stroke
+LTb
+LCb setrgbcolor
+905 4480 M
+stroke
+905 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01134|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+1280 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+1280 640 M
+stroke
+LTb
+LCb setrgbcolor
+1280 4480 M
+stroke
+1280 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01135|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+1426 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+1426 640 M
+stroke
+LTb
+LCb setrgbcolor
+1426 4480 M
+stroke
+1426 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01136|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+2132 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+2132 640 M
+stroke
+LTb
+LCb setrgbcolor
+2132 4480 M
+stroke
+2132 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01137|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+2398 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+2398 640 M
+stroke
+LTb
+LCb setrgbcolor
+2398 4480 M
+stroke
+2398 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01138|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+2522 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+2522 640 M
+stroke
+LTb
+LCb setrgbcolor
+2522 4480 M
+stroke
+2522 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01139|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+3025 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+3025 640 M
+stroke
+LTb
+LCb setrgbcolor
+3025 4480 M
+stroke
+3025 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01140|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+3284 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+3284 640 M
+stroke
+LTb
+LCb setrgbcolor
+3284 4480 M
+stroke
+3284 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01141|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+3487 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+3487 640 M
+stroke
+LTb
+LCb setrgbcolor
+3487 4480 M
+stroke
+3487 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01142|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+3830 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+3830 640 M
+stroke
+LTb
+LCb setrgbcolor
+3830 4480 M
+stroke
+3830 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01143|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+4137 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+4137 640 M
+stroke
+LTb
+LCb setrgbcolor
+4137 4480 M
+stroke
+4137 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01144|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+4634 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+4634 640 M
+stroke
+LTb
+LCb setrgbcolor
+4634 4480 M
+stroke
+4634 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01145|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+5060 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+5060 640 M
+stroke
+LTb
+LCb setrgbcolor
+5060 4480 M
+stroke
+5060 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01146|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+5422 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+5422 640 M
+stroke
+LTb
+LCb setrgbcolor
+5422 4480 M
+stroke
+5422 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01147|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+5925 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+5925 640 M
+stroke
+LTb
+LCb setrgbcolor
+5925 4480 M
+stroke
+5925 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01148|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+6362 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+6362 640 M
+stroke
+LTb
+LCb setrgbcolor
+6362 4480 M
+stroke
+6362 526 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01224|)]
+] -18.7 MCshow
+grestore
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+6401 640 M
+0 3840 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+6401 640 M
+stroke
+LTb
+LCb setrgbcolor
+6401 4480 M
+stroke
+LTb
+LCb setrgbcolor
+LCb setrgbcolor
+3600 406 M
+[ [(Courier) 80.0 0.0 true true 0 (REF)]
+] -26.7 MCshow
+LTb
+0.500 UL
+LTa
+LCa setrgbcolor
+799 640 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 640 M
+stroke
+LTb
+LCb setrgbcolor
+6401 640 M
+stroke
+731 640 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01133A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 676 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 676 M
+stroke
+LTb
+LCb setrgbcolor
+6401 676 M
+stroke
+731 676 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01133B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 712 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 712 M
+stroke
+LTb
+LCb setrgbcolor
+6401 712 M
+stroke
+731 712 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01134A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 841 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 841 M
+stroke
+LTb
+LCb setrgbcolor
+6401 841 M
+stroke
+731 841 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01134B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 969 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 969 M
+stroke
+LTb
+LCb setrgbcolor
+6401 969 M
+stroke
+731 969 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01135A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 1019 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 1019 M
+stroke
+LTb
+LCb setrgbcolor
+6401 1019 M
+stroke
+731 1019 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01135B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 1069 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 1069 M
+stroke
+LTb
+LCb setrgbcolor
+6401 1069 M
+stroke
+731 1069 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01136A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 1312 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 1312 M
+stroke
+LTb
+LCb setrgbcolor
+6401 1312 M
+stroke
+731 1312 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01136B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 1554 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 1554 M
+stroke
+LTb
+LCb setrgbcolor
+6401 1554 M
+stroke
+731 1554 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01137A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 1645 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 1645 M
+stroke
+LTb
+LCb setrgbcolor
+6401 1645 M
+stroke
+731 1645 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01137B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 1736 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 1736 M
+stroke
+LTb
+LCb setrgbcolor
+6401 1736 M
+stroke
+731 1736 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01138A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 1779 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 1779 M
+stroke
+LTb
+LCb setrgbcolor
+6401 1779 M
+stroke
+731 1779 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01138B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 1821 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 1821 M
+stroke
+LTb
+LCb setrgbcolor
+6401 1821 M
+stroke
+731 1821 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01139A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 1994 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 1994 M
+stroke
+LTb
+LCb setrgbcolor
+6401 1994 M
+stroke
+731 1994 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01139B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 2166 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 2166 M
+stroke
+LTb
+LCb setrgbcolor
+6401 2166 M
+stroke
+731 2166 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01140A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 2255 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 2255 M
+stroke
+LTb
+LCb setrgbcolor
+6401 2255 M
+stroke
+731 2255 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01140B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 2344 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 2344 M
+stroke
+LTb
+LCb setrgbcolor
+6401 2344 M
+stroke
+731 2344 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01141A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 2413 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 2413 M
+stroke
+LTb
+LCb setrgbcolor
+6401 2413 M
+stroke
+731 2413 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01141B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 2483 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 2483 M
+stroke
+LTb
+LCb setrgbcolor
+6401 2483 M
+stroke
+731 2483 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01142A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 2600 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 2600 M
+stroke
+LTb
+LCb setrgbcolor
+6401 2600 M
+stroke
+731 2600 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01142B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 2718 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 2718 M
+stroke
+LTb
+LCb setrgbcolor
+6401 2718 M
+stroke
+731 2718 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01143A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 2823 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 2823 M
+stroke
+LTb
+LCb setrgbcolor
+6401 2823 M
+stroke
+731 2823 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01143B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 2928 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 2928 M
+stroke
+LTb
+LCb setrgbcolor
+6401 2928 M
+stroke
+731 2928 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01144A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 3099 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 3099 M
+stroke
+LTb
+LCb setrgbcolor
+6401 3099 M
+stroke
+731 3099 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01144B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 3269 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 3269 M
+stroke
+LTb
+LCb setrgbcolor
+6401 3269 M
+stroke
+731 3269 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01145A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 3415 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 3415 M
+stroke
+LTb
+LCb setrgbcolor
+6401 3415 M
+stroke
+731 3415 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01145B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 3561 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 3561 M
+stroke
+LTb
+LCb setrgbcolor
+6401 3561 M
+stroke
+731 3561 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01146A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 3685 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 3685 M
+stroke
+LTb
+LCb setrgbcolor
+6401 3685 M
+stroke
+731 3685 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01146B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 3809 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 3809 M
+stroke
+LTb
+LCb setrgbcolor
+6401 3809 M
+stroke
+731 3809 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01147A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 3982 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 3982 M
+stroke
+LTb
+LCb setrgbcolor
+6401 3982 M
+stroke
+731 3982 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01147B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 4154 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 4154 M
+stroke
+LTb
+LCb setrgbcolor
+6401 4154 M
+stroke
+731 4154 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01148A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 4304 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 4304 M
+stroke
+LTb
+LCb setrgbcolor
+6401 4304 M
+stroke
+731 4304 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01148B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 4454 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 4454 M
+stroke
+LTb
+LCb setrgbcolor
+6401 4454 M
+stroke
+731 4454 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01224A|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 4467 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 4467 M
+stroke
+LTb
+LCb setrgbcolor
+6401 4467 M
+stroke
+731 4467 M
+[ [(Courier) 80.0 0.0 true true 0 (ref|NC)]
+[(Courier) 64.0 -24.0 true true 0 (0)]
+[(Courier) 80.0 0.0 true true 0 (01224B|)]
+] -18.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+799 4480 M
+5602 0 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+799 4480 M
+stroke
+LTb
+LCb setrgbcolor
+6401 4480 M
+stroke
+LTb
+LCb setrgbcolor
+LCb setrgbcolor
+83 2560 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (QRY)]
+] -26.7 MCshow
+grestore
+LTb
+stroke gsave	%% draw gray scale smooth box
+maxcolors 0 gt {/imax maxcolors def} {/imax 1024 def} ifelse
+6541 640 translate 280 3840 scale 0 setlinewidth
+/ystep 1 imax div def /y0 0 def /ii 0 def
+{ y0 g 0 y0 N 1 0 V 0 ystep V -1 0 f
+/y0 y0 ystep add def /ii ii 1 add def
+ii imax ge {exit} if } loop
+grestore 0 setgray
+1.000 UL
+LTb
+LCb setrgbcolor
+6541 640 N
+280 0 V
+0 3840 V
+-280 0 V
+0 -3840 V
+Z stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+1.000 UL
+LTb
+LCb setrgbcolor
+6821 640 M
+stroke
+6869 640 M
+[ [(Courier) 80.0 0.0 true true 0 (0)]
+] -26.7 MLshow
+1.000 UL
+LTb
+LCb setrgbcolor
+6541 640 M
+280 768 R
+stroke
+6869 1408 M
+[ [(Courier) 80.0 0.0 true true 0 (20)]
+] -26.7 MLshow
+1.000 UL
+LTb
+LCb setrgbcolor
+6541 1408 M
+280 768 R
+stroke
+6869 2176 M
+[ [(Courier) 80.0 0.0 true true 0 (40)]
+] -26.7 MLshow
+1.000 UL
+LTb
+LCb setrgbcolor
+6541 2176 M
+280 768 R
+stroke
+6869 2944 M
+[ [(Courier) 80.0 0.0 true true 0 (60)]
+] -26.7 MLshow
+1.000 UL
+LTb
+LCb setrgbcolor
+6541 2944 M
+280 768 R
+stroke
+6869 3712 M
+[ [(Courier) 80.0 0.0 true true 0 (80)]
+] -26.7 MLshow
+1.000 UL
+LTb
+LCb setrgbcolor
+6541 3712 M
+280 768 R
+stroke
+6869 4480 M
+[ [(Courier) 80.0 0.0 true true 0 (100)]
+] -26.7 MLshow
+1.000 UL
+LTb
+LCb setrgbcolor
+6541 4480 M
+stroke
+LCb setrgbcolor
+7037 2560 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Courier) 80.0 0.0 true true 0 (%similarity)]
+] -26.7 MCshow
+grestore
+LTb
+1.000 UP
+grestore % colour palette end
+stroke
+grestore
+end
+showpage
+%%Trailer
+%%DocumentFonts: Courier
+%%Pages: 1
