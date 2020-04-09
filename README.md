@@ -18,7 +18,7 @@ The pipeline has been test on Ubuntu 16.04 and 18.04.
     - Gnuplot : https://sourceforge.net/projects/gnuplot/files/gnuplot/5.2.8/
 
 ### Software installation 
-Most software dependecies are managed using **`conda`** and are contained in the environement.yaml file.
+Most software dependecies are managed using **`conda`** and are contained in the **environement.yaml** file.
 
     - cd proto_phasing_workflow-
     - conda env create --name phasing-pipeline --file environment.yaml 
@@ -33,18 +33,27 @@ Most software dependecies are managed using **`conda`** and are contained in the
     - put your short-reads in fastQ/fastQ.gz in the data/short-reads folder
     - put your long-reads in fastQ/fastQ.gz in the data/long-reads folder
 
+When all your data are in the proper folder use the *fillConfig.py* with the command :
+
+    - ./fillConfig.py
+
+ This script will retrieve the name and location of all your data file and put them in the correct format in the **config.yaml** file   
 ### Quality control
-If you haven't done the quality control on your reads you can ask the pipeline to do it with the **QC** command like :
+If you haven't done the quality control on your reads you can ask the pipeline to do it with the **`QC`** command like :
 
     - For quality control of **only the short-reads** : snakemake QC_SR -j 10 
     - For quality control of **only the long-reads** : snakemake QC_LR -j 10 
     - For quality control on **both** : snakemake QC -j 10
 
 ### Phasing with SR + LR + reference genome
-Once your quality control are ok you can use the pipeline with 
+Once your quality control are ok you can use the pipeline with the **`all`** command like :
 
     - snakemake all -j 10
 
+### Cleaning the pipeline
+When you have finish or want to re-use the pipeline with another data set you can erase every files in all the folder with the command **`clean`** :
+
+- snakemake clean -j 10 
 ******************
 ## results
 At the end of the pipeline you obtain a fasta file of the two haplotype and a graph of the two haplotype against the reference geneome:
@@ -57,6 +66,6 @@ At the end of the pipeline you obtain a fasta file of the two haplotype and a gr
 
 ******************
 ## directory tree structure
-After the pipeline finish you directory tree structure should look like the one in the tree.txt :
+After the pipeline finish you directory tree structure should look like the one in the **tree.txt** :
 
 ![tree1](/img/tree1.png)    ![tree2](/img/tree2.png)

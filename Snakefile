@@ -1,24 +1,36 @@
 
 configfile: "config.yaml"
 
-SR_ext=".fastq.gz"
-LR_ext=".fastq"
-#sample_name=input("sample name : ")
-sample_name="sample"
-#library=input("library used for Short Read : ")
-library="library"
-#platform=input("platform (e.g. illumina, solid) : ")
-platform="illumina"
-#unit=input("platform unit (eg. run barcode) : ")
-unit="X"
+#SR_ext=".fastq.gz"
+SR_ext=input("short-reads extension : a for '.fastq' or b for '.fastq.gz' ? ")
+if SR_ext=="a" :
+    SR_ext=".fastq"
+else :
+    SR_ext=".fastq.gz"
+#LR_ext=".fastq"
+LR_ext=input("long-reads extension : a for '.fastq' or b for '.fastq.gz' ? ")
+if LR_ext=="a" :
+    LR_ext=".fastq"
+else :
+    LR_ext=".fastq.gz"
+sample_name=input("sample name : ")
+#sample_name="sample"
+library=input("library used for Short Read : ")
+#library="library"
+platform=input("platform (e.g. illumina, solid) : ")
+#platform="illumina"
+unit=input("platform unit (eg. run barcode) : ")
+#unit="X"
 
 
 ## one rule to rule them all
 rule all:
     input:
         plot="result/plots/"+sample_name+".gp",
-        #path="quality_control/short_reads/",
-        #path2="quality_control/long_reads/"
+        txt="data/variant-called/ShortReads/"+sample_name+"SR_stats.txt",
+        #htmlSR=expand("quality_control/short_reads/{short}_fastqc.html", short=config["short_reads"]),
+        #htmlLR="quality_control/long_reads/NanoPlot-report.html"
+
 
 ################################################## Quality control ######################################################################################
 rule QC:
@@ -88,8 +100,9 @@ rule sam_to_bamSR:           ### compressed to BAM
         "data/aligned_read/short_reads/bam_file/"+sample_name+".bam"
     log:
         "log/samtools_view/sam_to_bam/"+sample_name+".log"
+    threads: 10
     shell:
-        "(samtools view -Sb {input} > {output}) 2> {log}"
+        "(samtools view -@ {threads} -Sb {input} > {output}) 2> {log}"
 
 rule sort_bamSR:          ### sort the bam (needed for variant calling)
     input:
@@ -98,8 +111,9 @@ rule sort_bamSR:          ### sort the bam (needed for variant calling)
         "data/aligned_read/short_reads/sorted_bam/"+sample_name+"_SORTED.bam"
     log:
         "log/samtools_sort/"+sample_name+"SR.log"
+    threads: 10
     shell:
-        "(samtools sort {input} -o {output}) 2> {log}"
+        "(samtools sort -@ {threads} {input} -o {output}) 2> {log}"
 
 rule mapped_bam:        ### getting only the mapped reads
     input:
@@ -108,8 +122,9 @@ rule mapped_bam:        ### getting only the mapped reads
         "data/aligned_read/short_reads/mapped_bam/"+sample_name+"_SORTED_mapped.bam"
     log:
         "log/samtools_view/mapped_bam/"+sample_name+".log"
+    threads: 10
     shell:
-        "(samtools view -b -f 2 {input} > {output}) 2> {log}"
+        "(samtools view -@ {threads} -b -f 2 {input} > {output}) 2> {log}"
 
 rule picard_markduplicates:    ###mark the duplicated reads  
 #Duplicates can arise during sample preparation e.g. library construction using PCR or
@@ -171,7 +186,7 @@ rule gatk_haplo:    ### Variant calling (short reads)
 #                                                                                                                                                                #
 ##################################################################################################################################################################
 
-rule vcf_stats:
+rule vcf_stats:    
     input:
         "data/variant-called/ShortReads/"+sample_name+"SR.vcf"
     output:
@@ -183,6 +198,8 @@ rule vcf_stats:
         "(bcftools stats {input} > {output.txt} "
         "&& plot-vcfstats -p data/variant-called/ShortReads/plot/ -s {output.txt}"
         " ) 2> {log}"
+        # if PdfLatex is not install add -P option and comment {output.pdf}
+
 
 ################################################## Manipulation on the LONG-READS ######################################################################################
 
@@ -216,16 +233,18 @@ rule map_LR:        ### Mapping the long reads with the reference
     params:
         p="map-ont"  ### if using nanopore vs reference mapping
         #p="map-pb"  ###if using Pacbio vs reference mapping
+    threads: 8
     shell:
-        "(minimap2 -ax {params.p} {input.ref} {input.LR} > {output}) 2> {log}"
+        "(minimap2 -t {threads} -ax {params.p} {input.ref} {input.LR} > {output}) 2> {log}"
 
 rule sam_to_bamLR:      ### compressed to BAM 
     input:
         "data/aligned_read/long_reads/sam_file/"+sample_name+"_LR.sam"
     output:
         "data/aligned_read/long_reads/bam_file/"+sample_name+"_LR.bam"
+    threads : 10
     shell:
-        "samtools view -Sb {input} > {output}"
+        "samtools view -@ {threads} -Sb {input} > {output}"
 
 rule sort_bamLR:        ### sort the bam
     input:
@@ -234,8 +253,9 @@ rule sort_bamLR:        ### sort the bam
         "data/aligned_read/long_reads/sort_bam/"+sample_name+"_LR_SORTED.bam"
     log:
         "log/samtools_sort/"+sample_name+"LR.log"
+    threads:10 
     shell:
-        "(samtools sort {input} -o {output}) 2> {log}"
+        "(samtools sort -@ {threads} {input} -o {output}) 2> {log}"
 
 rule index_bam:        ### indexing the bam file 
     input:
@@ -338,4 +358,17 @@ rule memmer_plot:
     log:
         "log/memerplot/"+sample_name+".log"
     shell:
-        "(mummerplot -p result/plots/{sample_name} -s large {input}) 2> {log}"
+        "(mummerplot -p result/plots/{sample_name} --color -t postscript {input}) 2> {log}"
+
+
+
+
+################################################## When you finish or need to do it with another data set  ######################################################################################
+rule clean :
+    input:
+        SR=expand("data/short_reads/{short}"+SR_ext , short=config["short_reads"]),
+        LR=expand("data/long_reads/{long}"+LR_ext, long=config["long_reads"]),
+        fa=expand("data/genome/{genome}.fasta", genome=config["genome"])
+    shell:
+        "snakemake all --delete-all-output"
+        "&& rm {input.SR} {input.LR} {input.fa}"
