@@ -309,6 +309,8 @@ rule haplo_fasta:       ###Creating phased haplotype in FASTA format
     shell:
         "(bcftools consensus -H 1pIu -f {input.ref} {input.vgz} > {output.h1}"
         "&& bcftools consensus -H 2pIu -f {input.ref} {input.vgz} > {output.h2} ) 2> {log}"
+        "&& diff -q {output.h1} {output.h2} > AreTheHaploDiff.txt"
+
 
 rule merge_haplo:   ###Merging the haplotype  
     input:
