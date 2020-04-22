@@ -1,26 +1,26 @@
 
 configfile: "config.yaml"
 
-#SR_ext=".fastq.gz"
-SR_ext=input("short-reads extension : a for '.fastq' or b for '.fastq.gz' ? ")
-if SR_ext=="a" :
-    SR_ext=".fastq"
-else :
-    SR_ext=".fastq.gz"
-#LR_ext=".fastq"
-LR_ext=input("long-reads extension : a for '.fastq' or b for '.fastq.gz' ? ")
-if LR_ext=="a" :
-    LR_ext=".fastq"
-else :
-    LR_ext=".fastq.gz"
-sample_name=input("sample name : ")
-#sample_name="sample"
-library=input("library used for Short Read : ")
-#library="library"
-platform=input("platform (e.g. illumina, solid) : ")
-#platform="illumina"
-unit=input("platform unit (eg. run barcode) : ")
-#unit="X"
+SR_ext=".fastq.gz"
+#SR_ext=input("short-reads extension : a for '.fastq' or b for '.fastq.gz' ? ")
+#if SR_ext=="a" :
+    #SR_ext=".fastq"
+#else :
+    #SR_ext=".fastq.gz"
+LR_ext=".fastq"
+#LR_ext=input("long-reads extension : a for '.fastq' or b for '.fastq.gz' ? ")
+#if LR_ext=="a" :
+    #LR_ext=".fastq"
+#else :
+    #LR_ext=".fastq.gz"
+#sample_name=input("sample name : ")
+sample_name="sample"
+#library=input("library used for Short Read : ")
+library="library"
+#platform=input("platform (e.g. illumina, solid) : ")
+platform="illumina"
+#unit=input("platform unit (eg. run barcode) : ")
+unit="X"
 
 
 ## one rule to rule them all
@@ -28,6 +28,7 @@ rule all:
     input:
         plot="result/plots/"+sample_name+".gp",
         txt="data/variant-called/ShortReads/"+sample_name+"SR_stats.txt",
+        chrom=directory("result/haplotype/fasta/chrom_align/")
         #htmlSR=expand("quality_control/short_reads/{short}_fastqc.html", short=config["short_reads"]),
         #htmlLR="quality_control/long_reads/NanoPlot-report.html"
 
@@ -191,12 +192,12 @@ rule vcf_stats:
         "data/variant-called/ShortReads/"+sample_name+"SR.vcf"
     output:
         txt="data/variant-called/ShortReads/"+sample_name+"SR_stats.txt",
-        pdf="data/variant-called/ShortReads/plot/summary.pdf"
+        pdf="result/variant-called/ShortReads/plot/summary.pdf"
     log:
         "log/plot-vcfstats/"+sample_name+".log"
     shell:
         "(bcftools stats {input} > {output.txt} "
-        "&& plot-vcfstats -p data/variant-called/ShortReads/plot/ -s {output.txt}"
+        "&& plot-vcfstats -p result/variant-called/ShortReads/plot/ -s {output.txt}"
         " ) 2> {log}"
         # if PdfLatex is not install add -P option and comment {output.pdf}
 
@@ -205,7 +206,8 @@ rule vcf_stats:
 
 rule merge_LR:      ###Merging the long reads into one file (more practical for nanochop)
     input:
-        LR=expand("data/long_reads/{long}"+LR_ext, long=config["long_reads"])
+        LR=expand("data/long_reads/{long}"+LR_ext, long=config["long_reads"]),
+        sa=expand("data/genome/{genome}.fasta.sa", genome=config["genome"])
     output:
         "data/long_reads/merged/"+sample_name+"_LR_merged"+LR_ext
     shell:
@@ -218,8 +220,9 @@ rule trim_pore:     ###searching and triming adapter in long reads
         "data/long_reads/trim/"+sample_name+"_LR_trim"+LR_ext
     log:
         "log/porechop/"+sample_name+".log"
+    threads:10
     shell:
-        "(porechop -i {input} -o {output}) 2> {log}"
+        "(porechop -t {threads} -i {input} -o {output}) 2> {log}"
 
 rule map_LR:        ### Mapping the long reads with the reference 
     input:
@@ -276,9 +279,11 @@ rule what_phase:        ### reconstruct the haplotypes
     output:
         "data/variant-called/ShortReads/"+sample_name+"_phased.vcf"
     log:
-        "log/whatshapp"+sample_name+"LR.log"
+        "log/whatshapp"+sample_name+".log"
+    params:
+        "--indels"  # phase indels by adding the option
     shell:
-        "(whatshap phase --reference {input.ref} -o {output} {input.vcf} {input.LR}) 2>{log}"
+        "(whatshap phase --reference {input.ref} --ignore-read-groups -o {output} {input.vcf} {input.LR}) 2>{log}"
 
 rule bgzip:     ##compressing the phased vcf
     input:
@@ -305,12 +310,19 @@ rule haplo_fasta:       ###Creating phased haplotype in FASTA format
         h1="result/haplotype/fasta/"+sample_name+"haplotype_1.fasta",
         h2="result/haplotype/fasta/"+sample_name+"haplotype_2.fasta"
     log:
-        "log/bcftools/"+sample_name+"LR.log"
+        "log/bcftools/"+sample_name+".log"
     shell:
         "(bcftools consensus -H 1pIu -f {input.ref} {input.vgz} > {output.h1}"
         "&& bcftools consensus -H 2pIu -f {input.ref} {input.vgz} > {output.h2} ) 2> {log}"
-        "&& diff -q {output.h1} {output.h2} > AreTheHaploDiff.txt"
 
+#rule are_diff:
+#    input:
+#        h1="result/haplotype/fasta/"+sample_name+"haplotype_1.fasta",
+#        h2="result/haplotype/fasta/"+sample_name+"haplotype_2.fasta"
+#    output:
+#        txt="result/haplotype/fasta/AreTheHaploDiff.txt"
+#    shell:
+#        "diff -q {input.h1} {input.h2} > {output.txt}"
 
 rule merge_haplo:   ###Merging the haplotype  
     input:
@@ -329,12 +341,24 @@ rule sort_haplo:    ### to having a better plot
     script:
         "script/classiFasta.py"
 
+rule split_chrom: 
+    input:
+        haplo="result/haplotype/fasta/"+sample_name+"haplotype_sorted.fasta",
+        ref=expand("data/genome/{genome}.fasta", genome=config["genome"])
+    output:
+        directory("result/haplotype/fasta/chromosomes/")
+    params:
+        '{F=sprintf("result/haplotype/fasta/chromosomes/%s.fasta",$2); print > F;next;} {print >> F;}'
+    shell:
+        "awk -F '|' '/^>/ {params}' < {input.haplo} "
+        " && awk -F '|' '/^>/ {params}' < {input.ref} "
+
+    
 rule nucmer:        ###aligned the haplotype with the reference nucmer 
     input:
         ref=expand("data/genome/{genome}.fasta", genome=config["genome"]),
         fa="result/haplotype/fasta/"+sample_name+"haplotype_sorted.fasta"
     output:
-        #path="result/delta_file/"+sample_name ,
         name="result/delta_file/"+sample_name+".delta"
     log:
         "log/nucmer/"+sample_name+".log"
@@ -355,14 +379,19 @@ rule memmer_plot:
     input:
         "result/delta_file/"+sample_name+"_filtered.delta"
     output:
-        #path="result/plots/"+sample_name,
         gp="result/plots/"+sample_name+".gp"
     log:
         "log/memerplot/"+sample_name+".log"
     shell:
         "(mummerplot -p result/plots/{sample_name} --color -t postscript {input}) 2> {log}"
 
-
+rule mummer_chrom:
+    input:
+        directory("result/haplotype/fasta/chromosomes/")
+    output:
+        directory("result/haplotype/fasta/chrom_align/")
+    script:
+        "script/alignChrom.py"
 
 
 ################################################## When you finish or need to do it with another data set  ######################################################################################
@@ -374,3 +403,5 @@ rule clean :
     shell:
         "snakemake all --delete-all-output"
         "&& rm {input.SR} {input.LR} {input.fa}"
+        "&& rm quality_control/long_reads/* quality_control/short_reads/* data/variant-called/ShortReads/plot/* data/aligned_read/short_reads/readyToCall/* "
+        "&& rm -r log/*"
