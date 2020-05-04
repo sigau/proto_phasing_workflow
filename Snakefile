@@ -28,7 +28,9 @@ rule all:
     input:
         plot="result/plots/"+sample_name+".gp",
         txt="data/variant-called/ShortReads/"+sample_name+"SR_stats.txt",
-        chrom=directory("result/haplotype/fasta/chrom_align/")
+        chrom=directory("result/haplotype/fasta/chrom_align/"),
+        csv1="result/haplotype/fasta/"+sample_name+"haplotype_1_gc_content.csv",
+        csv2="result/haplotype/fasta/"+sample_name+"haplotype_2_gc_content.csv"
         #htmlSR=expand("quality_control/short_reads/{short}_fastqc.html", short=config["short_reads"]),
         #htmlLR="quality_control/long_reads/NanoPlot-report.html"
 
@@ -192,14 +194,8 @@ rule vcf_stats:
         "data/variant-called/ShortReads/"+sample_name+"SR.vcf"
     output:
         txt="data/variant-called/ShortReads/"+sample_name+"SR_stats.txt",
-        pdf="result/variant-called/ShortReads/plot/summary.pdf"
-    log:
-        "log/plot-vcfstats/"+sample_name+".log"
-    shell:
-        "(bcftools stats {input} > {output.txt} "
-        "&& plot-vcfstats -p result/variant-called/ShortReads/plot/ -s {output.txt}"
-        " ) 2> {log}"
-        # if PdfLatex is not install add -P option and comment {output.pdf}
+    script:
+        "script/rtgstats.py"
 
 
 ################################################## Manipulation on the LONG-READS ######################################################################################
@@ -350,7 +346,7 @@ rule split_chrom:
     params:
         '{F=sprintf("result/haplotype/fasta/chromosomes/%s.fasta",$2); print > F;next;} {print >> F;}'
     shell:
-        "awk -F '|' '/^>/ {params}' < {input.haplo} "
+        "awk -F '|' '/^>/ {params}' < {input.haplo} "       ###replace '|' by '>' 
         " && awk -F '|' '/^>/ {params}' < {input.ref} "
 
     
@@ -392,6 +388,23 @@ rule mummer_chrom:
         directory("result/haplotype/fasta/chrom_align/")
     script:
         "script/alignChrom.py"
+
+rule haplo1_GC:
+    input:
+        h1="result/haplotype/fasta/"+sample_name+"haplotype_1.fasta"
+
+    output:
+        h1="result/haplotype/fasta/"+sample_name+"haplotype_1_gc_content.csv"
+    script:
+        "script/get_gc.py"       
+
+rule haplo2_GC:
+    input:
+        h2="result/haplotype/fasta/"+sample_name+"haplotype_2.fasta"
+    output:
+        h2="result/haplotype/fasta/"+sample_name+"haplotype_2_gc_content.csv"
+    script:
+        "script/get_gc.py"
 
 
 ################################################## When you finish or need to do it with another data set  ######################################################################################
