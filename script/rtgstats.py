@@ -38,5 +38,5 @@ het_level=int(nb_het_snp)/int(nb_snp)
 
 
 nf=open(output,"a")
-nf.write(f"heterozygosity level :   {het_level}") 
+nf.write(f"Heterozygosity level :   {het_level}") 
 nf.close   

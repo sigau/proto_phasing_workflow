@@ -30,7 +30,8 @@ rule all:
         txt="data/variant-called/ShortReads/"+sample_name+"SR_stats.txt",
         chrom=directory("result/haplotype/fasta/chrom_align/"),
         csv1="result/haplotype/fasta/"+sample_name+"haplotype_1_gc_content.csv",
-        csv2="result/haplotype/fasta/"+sample_name+"haplotype_2_gc_content.csv"
+        csv2="result/haplotype/fasta/"+sample_name+"haplotype_2_gc_content.csv",
+        h1vsh2="result/haplotype/fasta/dnadiff/haplotype_1VShaplotype_2.report",
         #htmlSR=expand("quality_control/short_reads/{short}_fastqc.html", short=config["short_reads"]),
         #htmlLR="quality_control/long_reads/NanoPlot-report.html"
 
@@ -83,7 +84,7 @@ rule index_fasta:          ### Indexing the reference sequence
         "&& picard CreateSequenceDictionary R={input.fa} O={output.dic}" 
         "&& samtools faidx {input.fa}"
 
-rule bwa_aln:           ###align the reads with the reference fasta  
+rule bwa_mem:           ###align the reads with the reference fasta  
     input:
         fa=expand("data/genome/{genome}.fasta", genome=config["genome"]),
         SR=expand("data/short_reads/{short}"+SR_ext , short=config["short_reads"]),
@@ -311,14 +312,19 @@ rule haplo_fasta:       ###Creating phased haplotype in FASTA format
         "(bcftools consensus -H 1pIu -f {input.ref} {input.vgz} > {output.h1}"
         "&& bcftools consensus -H 2pIu -f {input.ref} {input.vgz} > {output.h2} ) 2> {log}"
 
-#rule are_diff:
-#    input:
-#        h1="result/haplotype/fasta/"+sample_name+"haplotype_1.fasta",
-#        h2="result/haplotype/fasta/"+sample_name+"haplotype_2.fasta"
-#    output:
-#        txt="result/haplotype/fasta/AreTheHaploDiff.txt"
-#    shell:
-#        "diff -q {input.h1} {input.h2} > {output.txt}"
+rule are_diff:
+    input:
+        h1="result/haplotype/fasta/"+sample_name+"haplotype_1.fasta",
+        h2="result/haplotype/fasta/"+sample_name+"haplotype_2.fasta",
+        ref=expand("data/genome/{genome}.fasta", genome=config["genome"])
+    output:
+        h1vsh2="result/haplotype/fasta/dnadiff/haplotype_1VShaplotype_2.report",
+        refvsh1="result/haplotype/fasta/dnadiff/ref_genomeVShaplotype_1.report",
+        refvsh2="result/haplotype/fasta/dnadiff/ref_genomeVShaplotype_2.report"
+    shell:
+        "dnadiff --prefix result/haplotype/fasta/dnadiff/haplotype_1VShaplotype_2 {input.h1} {input.h2} "
+        "&& dnadiff --prefix result/haplotype/fasta/dnadiff/ref_genomeVShaplotype_1 {input.ref} {input.h1} "
+        "&& dnadiff --prefix result/haplotype/fasta/dnadiff/ref_genomeVShaplotype_2 {input.ref} {input.h2} "
 
 rule merge_haplo:   ###Merging the haplotype  
     input:
@@ -346,8 +352,8 @@ rule split_chrom:
     params:
         '{F=sprintf("result/haplotype/fasta/chromosomes/%s.fasta",$2); print > F;next;} {print >> F;}'
     shell:
-        "awk -F '|' '/^>/ {params}' < {input.haplo} "       ###replace '|' by '>' 
-        " && awk -F '|' '/^>/ {params}' < {input.ref} "
+        "awk -F '>' '/^>/ {params}' < {input.haplo} "       ###replace '|' by '>' 
+        " && awk -F '>' '/^>/ {params}' < {input.ref} "
 
     
 rule nucmer:        ###aligned the haplotype with the reference nucmer 
@@ -383,28 +389,26 @@ rule memmer_plot:
 
 rule mummer_chrom:
     input:
-        directory("result/haplotype/fasta/chromosomes/")
+        directory("result/haplotype/fasta/chromosomes/"),
+	h1vsh2="result/haplotype/fasta/dnadiff/haplotype_1VShaplotype_2.report"
     output:
         directory("result/haplotype/fasta/chrom_align/")
     script:
         "script/alignChrom.py"
 
-rule haplo1_GC:
+rule haplo_GC:
     input:
-        h1="result/haplotype/fasta/"+sample_name+"haplotype_1.fasta"
+        h1="result/haplotype/fasta/"+sample_name+"haplotype_1.fasta",
+        h2="result/haplotype/fasta/"+sample_name+"haplotype_2.fasta"
 
     output:
-        h1="result/haplotype/fasta/"+sample_name+"haplotype_1_gc_content.csv"
+        h1="result/haplotype/fasta/"+sample_name+"haplotype_1_gc_content.csv",
+        h1graph="result/haplotype/fasta/"+sample_name+"haplotype_1_gc_content.svg",
+        h2="result/haplotype/fasta/"+sample_name+"haplotype_2_gc_content.csv",
+        h2graph="result/haplotype/fasta/"+sample_name+"haplotype_2_gc_content.svg",
+        h1vsh2="result/haplotype/fasta/haplotype1VShaplotype2_gc_content.svg"
     script:
         "script/get_gc.py"       
-
-rule haplo2_GC:
-    input:
-        h2="result/haplotype/fasta/"+sample_name+"haplotype_2.fasta"
-    output:
-        h2="result/haplotype/fasta/"+sample_name+"haplotype_2_gc_content.csv"
-    script:
-        "script/get_gc.py"
 
 
 ################################################## When you finish or need to do it with another data set  ######################################################################################

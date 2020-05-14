@@ -13,7 +13,9 @@ nbseq=0                                             ###number of sequence in the
 secseq=0                                            ### secondary counter of nbseq
 new_file="result/haplotype/fasta/temp_renamed.fasta"                             ### the file after we add A and B
 sort_file=snakemake.output[0]                        ### the file after we insert the B between the A
-
+nf=open(new_file,"w")
+nf.write("")
+nf.close
 ##count the number of sequence
 position_of_chevron=[]
 cpt_chevron=-1
@@ -23,25 +25,15 @@ for line in fasta :
         nbseq=nbseq+1
         position_of_chevron.append(cpt_chevron)                      ###we spot where are the chevron and so
                                                                      ###where the sequence begin and end
-list_of_chrom=[]
+
 ### first step rename the sequence with identical name
 for line in fasta :
     if line[0]==">" :
         secseq=secseq+1
-        pipeCPT=0
-        wip=0  ##where is pipe  
-        while (pipeCPT!=2) :
-            for i in range (0, len(line)-1):
-                if line[i]=="|" :
-                    pipeCPT=pipeCPT+1
-                    wip=i
-        chrom=line[0:wip]
-        if chrom not in list_of_chrom:
-            list_of_chrom.append(chrom)
-            line=line[0:wip]+"A"+line[wip:len(line)-1]+"\n"       ### we add a A just before the second pipe
+        if secseq<=(nbseq/2):
+            line=line[0:len(line)-1]+"_A"+"\n"       ### we add a A just before the end of line  
         else:
-            line=line[0:wip]+"B"+line[wip:len(line)-1]+"\n"       ### we add a B just before the second pipe
-    
+            line=line[0:len(line)-1]+"_B"+"\n"       ### we add a B just before the end of line 
         nf=open(new_file,"a") 
         nf.write(line)
         nf.close     
